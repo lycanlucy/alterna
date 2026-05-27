@@ -19,6 +19,7 @@ public interface SpecialMobEffect {
     // List of mob effects that cannot be removed normally (ie with milk)
     ArrayList<Holder<MobEffect>> SPECIAL_MOB_EFFECTS = Util.make(Lists.newArrayList(), holders -> {
         holders.add(MobEffects.CONDUIT_POWER);
+        holders.add(MobEffects.HERO_OF_THE_VILLAGE);
         holders.add(AlternaMobEffects.LORD_OF_THE_SKIES);
     });
 }
