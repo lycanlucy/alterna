@@ -1,4 +1,4 @@
-package io.github.lycanlucy.alterna.data.provider;
+package io.github.lycanlucy.alterna.data.server;
 
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.core.HolderLookup;
