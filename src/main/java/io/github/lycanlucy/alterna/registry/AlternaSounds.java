@@ -10,6 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class AlternaSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, Alterna.MOD_ID);
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> APPLY_EFFECT_LORD_OF_THE_SKIES = sound("event.mob_effect.lord_of_the_skies");
     public static final DeferredHolder<SoundEvent, SoundEvent> CONCH_SHELL_PLAY_POUR = sound("item.conch_shell.play.pour");
     public static final DeferredHolder<SoundEvent, SoundEvent> CONCH_SHELL_PLAY_ROAR = sound("item.conch_shell.play.roar");
     public static final DeferredHolder<SoundEvent, SoundEvent> CONCH_SHELL_PLAY_SHINE = sound("item.conch_shell.play.shine");
