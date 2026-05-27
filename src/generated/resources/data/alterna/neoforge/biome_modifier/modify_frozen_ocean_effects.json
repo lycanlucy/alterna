@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:frozen_ocean",
+  "water_color": 2453685,
+  "water_fog_color": 1526149
+}

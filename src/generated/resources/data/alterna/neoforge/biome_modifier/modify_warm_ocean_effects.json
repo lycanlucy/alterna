@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:warm_ocean",
+  "water_color": 176357,
+  "water_fog_color": 166357
+}

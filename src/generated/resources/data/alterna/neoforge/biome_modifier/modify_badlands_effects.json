@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:badlands",
+  "water_color": 5144449,
+  "water_fog_color": 5144449
+}

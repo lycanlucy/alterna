@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:stony_shore",
+  "water_color": 878523,
+  "water_fog_color": 878523
+}

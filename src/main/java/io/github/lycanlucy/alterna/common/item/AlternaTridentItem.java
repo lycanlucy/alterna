@@ -88,6 +88,9 @@ public class AlternaTridentItem extends Item implements ProjectileItem {
                             stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(entityLiving.getUsedItemHand()));
                             if (spinAttackStrength == 0.0F) {
                                 AlternaThrownTrident thrownTrident = new AlternaThrownTrident(level, player, stack);
+                                if (entityLiving instanceof Player) {
+                                    thrownTrident.setReturnSlot((byte) player.getInventory().selected);
+                                }
                                 thrownTrident.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, SHOOT_POWER, 1.0f);
                                 if (player.hasInfiniteMaterials()) {
                                     thrownTrident.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;

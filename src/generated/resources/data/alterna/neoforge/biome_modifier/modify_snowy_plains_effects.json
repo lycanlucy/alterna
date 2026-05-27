@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:snowy_plains",
+  "water_color": 1332635,
+  "water_fog_color": 1332635
+}

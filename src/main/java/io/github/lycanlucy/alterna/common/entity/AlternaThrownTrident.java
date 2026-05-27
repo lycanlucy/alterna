@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
 
 public class AlternaThrownTrident extends AbstractArrow {
     private static final EntityDataAccessor<Byte> ID_LOYALTY = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.BYTE);
+    private static final EntityDataAccessor<Byte> ID_RETURN_SLOT = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.BYTE);
     private static final EntityDataAccessor<ItemStack> ID_ITEM_STACK = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.ITEM_STACK);
     private boolean dealtDamage;
     public int clientSideReturnTridentTickCount;
@@ -54,6 +55,7 @@ public class AlternaThrownTrident extends AbstractArrow {
     protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
         builder.define(ID_LOYALTY, (byte) 0);
+        builder.define(ID_RETURN_SLOT, (byte) -1);
         builder.define(ID_ITEM_STACK, new ItemStack(AlternaItems.TRIDENT.get()));
     }
 
@@ -63,6 +65,14 @@ public class AlternaThrownTrident extends AbstractArrow {
 
     public ItemStack getItemStack() {
         return this.entityData.get(ID_ITEM_STACK);
+    }
+
+    public void setReturnSlot(byte slot) {
+        this.entityData.set(ID_RETURN_SLOT, slot);
+    }
+
+    public byte getReturnSlot() {
+        return this.entityData.get(ID_RETURN_SLOT);
     }
 
     public boolean returnsToOwnerAfterLanding() {
@@ -160,7 +170,11 @@ public class AlternaThrownTrident extends AbstractArrow {
 
     @Override
     protected boolean tryPickup(@NotNull Player player) {
-        return super.tryPickup(player) || this.isNoPhysics() && this.ownedBy(player) && player.getInventory().add(this.getPickupItem());
+        return this.isNoPhysics() && this.ownedBy(player) && attemptReturningToOriginalSlot(player) || super.tryPickup(player);
+    }
+
+    private boolean attemptReturningToOriginalSlot(Player player) {
+        return player.getInventory().add(this.getReturnSlot(), this.getPickupItem()) || player.getInventory().add(this.getPickupItem());
     }
 
     @Override
@@ -188,6 +202,7 @@ public class AlternaThrownTrident extends AbstractArrow {
         if (compound.contains("ItemStack", 10)) {
             this.setItemStack(ItemStack.parse(this.registryAccess(), compound.getCompound("ItemStack")).orElse(this.getDefaultPickupItem()));
         }
+        this.setReturnSlot(compound.getByte("ReturnSlot"));
     }
 
     @Override
@@ -195,6 +210,7 @@ public class AlternaThrownTrident extends AbstractArrow {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("DealtDamage", this.dealtDamage);
         compound.put("ItemStack", this.getItemStack().save(this.registryAccess()));
+        compound.putByte("ReturnSlot", this.getReturnSlot());
     }
 
     private byte getLoyaltyFromItem(ItemStack stack) {

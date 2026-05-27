@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:sparse_jungle",
+  "water_color": 887523,
+  "water_fog_color": 887523
+}

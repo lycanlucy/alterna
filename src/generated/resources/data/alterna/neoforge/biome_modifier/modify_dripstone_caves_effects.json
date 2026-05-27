@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:dripstone_caves",
+  "water_color": 4501493,
+  "water_fog_color": 4501493
+}

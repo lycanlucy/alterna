@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:windswept_gravelly_hills",
+  "water_color": 943019,
+  "water_fog_color": 943019
+}

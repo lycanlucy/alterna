@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:desert",
+  "water_color": 3319192,
+  "water_fog_color": 3319192
+}

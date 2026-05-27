@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:flower_forest",
+  "water_color": 2139084,
+  "water_fog_color": 2139084
+}

@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:snowy_taiga",
+  "water_color": 2121347,
+  "water_fog_color": 2121347
+}

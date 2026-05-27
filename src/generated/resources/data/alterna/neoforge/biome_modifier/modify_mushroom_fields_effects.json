@@ -1,0 +1,6 @@
+{
+  "type": "alterna:modify_effects",
+  "biomes": "minecraft:mushroom_fields",
+  "water_color": 9079191,
+  "water_fog_color": 9079191
+}
