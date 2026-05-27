@@ -2,8 +2,12 @@
   "required": true,
   "package": "io.github.lycanlucy.alterna.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "DrownedMixin",
+    "PointedDripstoneBlockMixin"
+  ],
   "client": [
+    "client.DrownedModelMixin",
     "client.ItemInHandLayerMixin"
   ],
   "injectors": {
