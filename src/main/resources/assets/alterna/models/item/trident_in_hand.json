@@ -1,0 +1,6 @@
+{
+  "parent": "alterna:item/template_trident_in_hand",
+  "textures": {
+    "layer0": "alterna:item/trident_in_hand"
+  }
+}

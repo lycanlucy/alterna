@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sunken_tridnet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "alterna:sunken_trident"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "alterna:trident"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sunken_tridnet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "alterna:trident"
+    ]
+  }
+}

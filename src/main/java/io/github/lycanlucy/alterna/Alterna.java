@@ -1,6 +1,7 @@
 package io.github.lycanlucy.alterna;
 
 import com.mojang.logging.LogUtils;
+import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -14,6 +15,8 @@ public class Alterna {
     public Alterna(IEventBus modEventBus) {
         modEventBus.addListener(this::commonSetup);
 
+        LOGGER.info("Adding deferred registers to the mod bus");
+        AlternaItems.register(modEventBus);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

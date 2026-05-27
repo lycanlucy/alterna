@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/generated",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "alterna:item/sunken_trident_in_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "alterna:item/sunken_trident_inventory"
+    },
+    "ground": {
+      "parent": "alterna:item/sunken_trident_inventory"
+    },
+    "fixed": {
+      "parent": "alterna:item/sunken_trident_inventory"
+    }
+  }
+}
