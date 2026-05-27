@@ -1,0 +1,41 @@
+{
+  "parent": "alterna:adventure/needs_a_touch_up",
+  "criteria": {
+    "shot_trident": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "minecraft:trident"
+            },
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:is_projectile"
+              }
+            ]
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.adventure.throw_trident.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "alterna:trident"
+    },
+    "title": {
+      "translate": "advancements.adventure.throw_trident.title"
+    }
+  },
+  "requirements": [
+    [
+      "shot_trident"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

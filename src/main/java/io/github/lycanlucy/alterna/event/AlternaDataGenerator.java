@@ -1,6 +1,7 @@
 package io.github.lycanlucy.alterna.event;
 
 import io.github.lycanlucy.alterna.Alterna;
+import io.github.lycanlucy.alterna.data.server.AlternaAdvancementProvider;
 import io.github.lycanlucy.alterna.data.server.AlternaBlockTagsProvider;
 import io.github.lycanlucy.alterna.data.server.AlternaItemTagsProvider;
 import io.github.lycanlucy.alterna.data.server.AlternaRecipeProvider;
@@ -28,5 +29,6 @@ public class AlternaDataGenerator {
         generator.addProvider(event.includeServer(), new AlternaItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
 
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
     }
 }

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "obtain_sunken_trident": {
+      "conditions": {
+        "items": [
+          {
+            "items": "alterna:sunken_trident"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.alterna.adventure.needs_a_touch_up.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "alterna:sunken_trident"
+    },
+    "title": {
+      "translate": "advancements.alterna.adventure.needs_a_touch_up.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_sunken_trident"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

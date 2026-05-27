@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:adventure/throw_trident",
+  "criteria": {
+    "struck_creeper": {
+      "conditions": {
+        "victims": [
+          [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "type": "minecraft:creeper"
+              }
+            }
+          ]
+        ]
+      },
+      "trigger": "minecraft:channeled_lightning"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.adventure.very_very_frightening.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "alterna:trident",
+      "components": {
+        "minecraft:enchantment_glint_override": true
+      }
+    },
+    "title": {
+      "translate": "advancements.adventure.very_very_frightening.title"
+    }
+  },
+  "requirements": [
+    [
+      "struck_creeper"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
