@@ -16,7 +16,7 @@ public class AlternaItems {
 
     public static final DeferredItem<Item> TRIDENT = ITEMS.register("trident", () -> new AlternaTridentItem(new Item.Properties().rarity(Rarity.RARE).durability(250).attributes(AlternaTridentItem.createAttributes(AlternaTridentItem.TRIDENT_BASE_DAMAGE)).component(AlternaDataComponents.PROJECTILE_BASE_DAMAGE, AlternaTridentItem.TRIDENT_BASE_DAMAGE).component(DataComponents.TOOL, AlternaTridentItem.createToolProperties())));
     public static final DeferredItem<Item> SUNKEN_TRIDENT = ITEMS.register("sunken_trident", () -> new AlternaTridentItem(new Item.Properties().rarity(Rarity.RARE).durability(200).attributes(AlternaTridentItem.createAttributes(AlternaTridentItem.SUNKEN_TRIDENT_BASE_DAMAGE)).component(AlternaDataComponents.PROJECTILE_BASE_DAMAGE, AlternaTridentItem.SUNKEN_TRIDENT_BASE_DAMAGE).component(DataComponents.TOOL, AlternaTridentItem.createToolProperties())));
-    public static final DeferredItem<Item> CONCH_SHELL = ITEMS.register("conch_shell", () -> new ConchShellItem(new Item.Properties().stacksTo(1), AlternaInstrumentTags.CONCH_SHELLS));
+    public static final DeferredItem<Item> CONCH_SHELL = ITEMS.register("conch_shell", () -> new ConchShellItem(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1), AlternaInstrumentTags.CONCH_SHELLS));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
