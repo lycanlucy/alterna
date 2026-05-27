@@ -26,7 +26,7 @@ public abstract class ItemInHandLayerMixin<T extends LivingEntity, M extends Ent
     }
 
     @Inject(method = "renderArmWithItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/ItemInHandRenderer;renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V"))
-    private void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext displayContext, HumanoidArm arm, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
+    private void preRenderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext displayContext, HumanoidArm arm, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
         if (!itemStack.is(AlternaItemTags.TRIDENTS) || !(this.getParentModel() instanceof HumanoidModel<?>))
             return;
         boolean isRightArmUsingTrident = arm == HumanoidArm.RIGHT && ((HumanoidModel<?>) this.getParentModel()).rightArmPose == HumanoidModel.ArmPose.THROW_SPEAR;
