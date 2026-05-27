@@ -20,6 +20,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 public class AlternaEvents {
     @SubscribeEvent
     public static void buildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
+        CreativeModeTabHelper.populateToolsAndUtilities(event);
         CreativeModeTabHelper.populateCombat(event);
     }
 

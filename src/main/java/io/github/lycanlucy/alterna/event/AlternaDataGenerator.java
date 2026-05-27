@@ -2,10 +2,7 @@ package io.github.lycanlucy.alterna.event;
 
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.data.bootstrap.AlternaBiomeModifiers;
-import io.github.lycanlucy.alterna.data.server.AlternaAdvancementProvider;
-import io.github.lycanlucy.alterna.data.server.AlternaBlockTagsProvider;
-import io.github.lycanlucy.alterna.data.server.AlternaItemTagsProvider;
-import io.github.lycanlucy.alterna.data.server.AlternaRecipeProvider;
+import io.github.lycanlucy.alterna.data.server.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataGenerator;
@@ -32,10 +29,10 @@ public class AlternaDataGenerator {
 
         BlockTagsProvider blockTags = generator.addProvider(event.includeServer(), new AlternaBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new AlternaInstrumentTagsProvider(packOutput, lookupProvider, existingFileHelper));
 
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, AlternaBiomeModifiers::bootstrap), Set.of(Alterna.MOD_ID)));
-
     }
 }

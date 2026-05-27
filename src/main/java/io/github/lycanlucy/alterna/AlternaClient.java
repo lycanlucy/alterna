@@ -1,5 +1,7 @@
 package io.github.lycanlucy.alterna;
 
+import io.github.lycanlucy.alterna.registry.AlternaItems;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -14,5 +16,8 @@ public class AlternaClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ItemProperties.register(AlternaItems.CONCH_SHELL.get(), Alterna.modId("blowing"), (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0f : 0.0f);
+        });
     }
 }

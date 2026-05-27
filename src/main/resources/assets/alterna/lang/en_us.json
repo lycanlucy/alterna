@@ -3,6 +3,13 @@
   "advancements.alterna.adventure.needs_a_touch_up.description": "Obtain a Sunken Trident",
   "advancements.alterna.adventure.needs_a_touch_up.title": "Needs a Touch Up",
   "entity.alterna.trident": "Trident",
+  "instrument.alterna.pour_conch_shell": "Pour",
+  "instrument.alterna.roar_conch_shell": "Roar",
+  "instrument.alterna.shine_conch_shell": "Shine",
+  "item.alterna.conch_shell": "Conch Shell",
   "item.alterna.sunken_trident": "Sunken Trident",
-  "item.alterna.trident": "Trident"
+  "item.alterna.trident": "Trident",
+  "subtitles.alterna.item.conch_shell.play.pour": "Conch Shell pours",
+  "subtitles.alterna.item.conch_shell.play.roar": "Conch Shell roars",
+  "subtitles.alterna.item.conch_shell.play.shine": "Conch Shell shines"
 }

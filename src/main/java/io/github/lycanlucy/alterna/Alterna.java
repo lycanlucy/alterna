@@ -1,10 +1,7 @@
 package io.github.lycanlucy.alterna;
 
 import com.mojang.logging.LogUtils;
-import io.github.lycanlucy.alterna.registry.AlternaBiomeModifierSerializers;
-import io.github.lycanlucy.alterna.registry.AlternaDataComponents;
-import io.github.lycanlucy.alterna.registry.AlternaEntities;
-import io.github.lycanlucy.alterna.registry.AlternaItems;
+import io.github.lycanlucy.alterna.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -23,6 +20,8 @@ public class Alterna {
         AlternaItems.register(modEventBus);
         AlternaDataComponents.register(modEventBus);
         AlternaEntities.register(modEventBus);
+        AlternaSounds.register(modEventBus);
+        AlternaInstruments.register(modEventBus);
         AlternaBiomeModifierSerializers.register(modEventBus);
     }
 
