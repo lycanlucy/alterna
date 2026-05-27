@@ -1,6 +1,8 @@
 package io.github.lycanlucy.alterna;
 
 import com.mojang.logging.LogUtils;
+import io.github.lycanlucy.alterna.registry.AlternaDataComponents;
+import io.github.lycanlucy.alterna.registry.AlternaEntities;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
@@ -18,6 +20,8 @@ public class Alterna {
 
         LOGGER.info("Adding deferred registers to the mod bus");
         AlternaItems.register(modEventBus);
+        AlternaDataComponents.register(modEventBus);
+        AlternaEntities.register(modEventBus);
     }
 
     public static ResourceLocation modId(String name) {
