@@ -1,4 +1,4 @@
-package io.github.lycanlucy.alterna.client;
+package io.github.lycanlucy.alterna.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

@@ -19,7 +19,9 @@ public class Alterna {
         LOGGER.info("Adding deferred registers to the mod bus");
         AlternaItems.register(modEventBus);
         AlternaDataComponents.register(modEventBus);
+        AlternaMobEffects.register(modEventBus);
         AlternaEntities.register(modEventBus);
+        AlternaParticles.register(modEventBus);
         AlternaSounds.register(modEventBus);
         AlternaInstruments.register(modEventBus);
         AlternaBiomeModifierSerializers.register(modEventBus);

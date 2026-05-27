@@ -1,0 +1,43 @@
+package io.github.lycanlucy.alterna.common.item;
+
+import io.github.lycanlucy.alterna.registry.AlternaMobEffects;
+import io.github.lycanlucy.alterna.util.ConchShellEffect;
+import net.minecraft.core.Holder;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Instrument;
+import net.minecraft.world.item.InstrumentItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
+
+public class ConchShellItem extends InstrumentItem {
+    public ConchShellItem(Properties properties, TagKey<Instrument> instruments) {
+        super(properties, instruments);
+    }
+
+    @Override
+    public void releaseUsing(@NotNull ItemStack stack, @NotNull Level level, @NotNull LivingEntity livingEntity, int timeCharged) {
+        super.releaseUsing(stack, level, livingEntity, timeCharged);
+        if (level instanceof ServerLevel serverLevel && livingEntity.hasEffect(MobEffects.CONDUIT_POWER)) {
+            Optional<Holder<Instrument>> instrument = this.getInstrument(stack);
+            instrument.ifPresent(holder -> {
+                if (ConchShellEffect.INSTRUMENT_TO_EFFECT_MAP.containsKey(holder)) {
+                    RandomSource random = serverLevel.getRandom();
+                    ConchShellEffect effect = ConchShellEffect.INSTRUMENT_TO_EFFECT_MAP.get(holder);
+
+                    serverLevel.setWeatherParameters(effect.clearTime().sample(random), effect.weatherTime().sample(random), effect.raining(), effect.thundering());
+
+                    livingEntity.addEffect(new MobEffectInstance(AlternaMobEffects.LORD_OF_THE_SKIES, 24000, 0, true, true));
+                    livingEntity.removeEffect(MobEffects.CONDUIT_POWER);
+                }
+            });
+        }
+    }
+}

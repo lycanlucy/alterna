@@ -3,6 +3,7 @@ package io.github.lycanlucy.alterna.event;
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.data.server.tag.AlternaItemTags;
 import io.github.lycanlucy.alterna.util.CreativeModeTabHelper;
+import io.github.lycanlucy.alterna.util.SpecialMobEffect;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
@@ -11,10 +12,12 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.EffectCures;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 
 @EventBusSubscriber(modid = Alterna.MOD_ID)
 public class AlternaEvents {
@@ -22,6 +25,13 @@ public class AlternaEvents {
     public static void buildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
         CreativeModeTabHelper.populateToolsAndUtilities(event);
         CreativeModeTabHelper.populateCombat(event);
+    }
+
+    @SubscribeEvent
+    public static void onMobEffectAdded(MobEffectEvent.Added event) {
+        if (SpecialMobEffect.SPECIAL_MOB_EFFECTS.contains(event.getEffectInstance().getEffect())) {
+            event.getEffectInstance().getCures().removeIf(EffectCures.DEFAULT_CURES::contains);
+        }
     }
 
     @SubscribeEvent
