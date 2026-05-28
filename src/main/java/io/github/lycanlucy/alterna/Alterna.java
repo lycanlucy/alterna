@@ -24,6 +24,7 @@ public class Alterna {
         AlternaParticles.register(modEventBus);
         AlternaSounds.register(modEventBus);
         AlternaInstruments.register(modEventBus);
+        AlternaLootModifierSerializers.register(modEventBus);
         AlternaBiomeModifierSerializers.register(modEventBus);
     }
 

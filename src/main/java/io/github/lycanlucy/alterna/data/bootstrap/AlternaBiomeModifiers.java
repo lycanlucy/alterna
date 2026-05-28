@@ -1,7 +1,7 @@
 package io.github.lycanlucy.alterna.data.bootstrap;
 
 import io.github.lycanlucy.alterna.Alterna;
-import io.github.lycanlucy.alterna.util.ModifyEffectsBiomeModifier;
+import io.github.lycanlucy.alterna.common.biome.ModifyEffectsBiomeModifier;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;

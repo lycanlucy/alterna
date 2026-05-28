@@ -1,6 +1,8 @@
-package io.github.lycanlucy.alterna.util;
+package io.github.lycanlucy.alterna.common.biome;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.lycanlucy.alterna.registry.AlternaBiomeModifierSerializers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -15,6 +17,14 @@ public record ModifyEffectsBiomeModifier(HolderSet<Biome> biomes, Optional<Integ
                                          Optional<Integer> foliageColor,
                                          Optional<Integer> waterColor,
                                          Optional<Integer> waterFogColor) implements BiomeModifier {
+    public static final MapCodec<ModifyEffectsBiomeModifier> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(
+            Biome.LIST_CODEC.fieldOf("biomes").forGetter(ModifyEffectsBiomeModifier::biomes),
+            Codec.INT.optionalFieldOf("grass_color").forGetter(ModifyEffectsBiomeModifier::grassColor),
+            Codec.INT.optionalFieldOf("foliage_color").forGetter(ModifyEffectsBiomeModifier::foliageColor),
+            Codec.INT.optionalFieldOf("water_color").forGetter(ModifyEffectsBiomeModifier::waterColor),
+            Codec.INT.optionalFieldOf("water_fog_color").forGetter(ModifyEffectsBiomeModifier::waterFogColor)
+    ).apply(builder, ModifyEffectsBiomeModifier::new));
+
     @Override
     public void modify(@NotNull Holder<Biome> biome, @NotNull Phase phase, ModifiableBiomeInfo.BiomeInfo.@NotNull Builder builder) {
         if (phase == Phase.MODIFY && this.biomes.contains(biome)) {

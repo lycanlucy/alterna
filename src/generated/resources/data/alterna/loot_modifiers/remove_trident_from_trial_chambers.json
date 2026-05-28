@@ -1,0 +1,10 @@
+{
+  "type": "alterna:remove_item",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/trial_chambers/reward"
+    }
+  ],
+  "table": "minecraft:trident"
+}
