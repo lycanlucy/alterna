@@ -2,7 +2,6 @@ package io.github.lycanlucy.alterna.common.item;
 
 import io.github.lycanlucy.alterna.common.entity.AlternaThrownTrident;
 import io.github.lycanlucy.alterna.registry.AlternaDataComponents;
-import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -23,7 +22,10 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileItem;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
@@ -57,7 +59,7 @@ public class AlternaTridentItem extends Item implements ProjectileItem {
 
     @Override
     public boolean isValidRepairItem(ItemStack stack, @NotNull ItemStack repairCandidate) {
-        return stack.is(AlternaItems.TRIDENT) && repairCandidate.is(Items.PRISMARINE_SHARD);
+        return stack.getOrDefault(AlternaDataComponents.TRIDENT_PROPERTIES, TridentProperties.DEFAULT).repairIngredient().test(repairCandidate);
     }
 
     @Override
@@ -116,7 +118,7 @@ public class AlternaTridentItem extends Item implements ProjectileItem {
                             y *= spinAttackStrength / f;
                             z *= spinAttackStrength / f;
                             player.push(x, y, z);
-                            player.startAutoSpinAttack(20, stack.getOrDefault(AlternaDataComponents.PROJECTILE_BASE_DAMAGE, TRIDENT_BASE_DAMAGE), stack);
+                            player.startAutoSpinAttack(20, stack.getOrDefault(AlternaDataComponents.TRIDENT_PROPERTIES, TridentProperties.DEFAULT).projectileDamage(), stack);
                             if (player.onGround()) {
                                 player.move(MoverType.SELF, new Vec3(0.0, 1.1999999f, 0.0));
                             }
@@ -158,7 +160,7 @@ public class AlternaTridentItem extends Item implements ProjectileItem {
 
     @Override
     public int getEnchantmentValue(@NotNull ItemStack stack) {
-        return stack.is(AlternaItems.SUNKEN_TRIDENT) ? 0 : 1;
+        return stack.getOrDefault(AlternaDataComponents.TRIDENT_PROPERTIES, TridentProperties.DEFAULT).enchantability();
     }
 
     @Override

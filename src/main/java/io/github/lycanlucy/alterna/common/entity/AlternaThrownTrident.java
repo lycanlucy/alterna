@@ -1,8 +1,10 @@
 package io.github.lycanlucy.alterna.common.entity;
 
+import io.github.lycanlucy.alterna.common.item.TridentProperties;
 import io.github.lycanlucy.alterna.registry.AlternaDataComponents;
 import io.github.lycanlucy.alterna.registry.AlternaEntities;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -21,6 +23,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.PointedDripstoneBlock;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -76,7 +79,7 @@ public class AlternaThrownTrident extends AbstractArrow {
     }
 
     public boolean returnsToOwnerAfterLanding() {
-        return !this.getItemStack().is(AlternaItems.SUNKEN_TRIDENT);
+        return this.getItemStack().getOrDefault(AlternaDataComponents.TRIDENT_PROPERTIES, TridentProperties.DEFAULT).hasLoyaltyByDefault();
     }
 
     @Override
@@ -86,7 +89,7 @@ public class AlternaThrownTrident extends AbstractArrow {
         }
 
         Entity entity = this.getOwner();
-        int returnSpeed = returnsToOwnerAfterLanding() ? this.entityData.get(ID_LOYALTY) + 1 : 0;
+        int returnSpeed = returnsToOwnerAfterLanding() ? this.entityData.get(ID_LOYALTY) + 1 : this.entityData.get(ID_LOYALTY);
         if (returnSpeed > 0 && (this.dealtDamage || this.isNoPhysics()) && entity != null) {
             if (!this.isAcceptableReturnOwner()) {
                 if (!this.level().isClientSide && this.pickup == AbstractArrow.Pickup.ALLOWED) {
@@ -133,7 +136,7 @@ public class AlternaThrownTrident extends AbstractArrow {
         Entity owner = this.getOwner();
         DamageSource damageSource = this.damageSources().trident(this, owner == null ? this : owner);
         if (this.level() instanceof ServerLevel serverLevel) {
-            baseDamage = this.getWeaponItem().getOrDefault(AlternaDataComponents.PROJECTILE_BASE_DAMAGE, 8.0F);
+            baseDamage = this.getWeaponItem().getOrDefault(AlternaDataComponents.TRIDENT_PROPERTIES, TridentProperties.DEFAULT).projectileDamage();
             baseDamage = EnchantmentHelper.modifyDamage(serverLevel, this.getWeaponItem(), entity, damageSource, baseDamage);
         }
 
@@ -155,6 +158,17 @@ public class AlternaThrownTrident extends AbstractArrow {
 
         this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01, -0.1, -0.01));
         this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
+    }
+
+    @Override
+    protected void onHitBlock(@NotNull BlockHitResult result) {
+        if (!this.level().isClientSide) {
+            BlockPos blockPos = result.getBlockPos();
+            if (this.mayInteract(this.level(), blockPos) && this.mayBreak(this.level()) && this.level().getBlockState(blockPos).getBlock() instanceof PointedDripstoneBlock && this.getDeltaMovement().length() > 0.6) {
+                this.level().destroyBlock(blockPos, true);
+            }
+        }
+        super.onHitBlock(result);
     }
 
     @Override
