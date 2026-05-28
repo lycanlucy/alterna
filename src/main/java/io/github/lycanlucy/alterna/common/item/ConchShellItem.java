@@ -3,7 +3,9 @@ package io.github.lycanlucy.alterna.common.item;
 import io.github.lycanlucy.alterna.registry.AlternaMobEffects;
 import io.github.lycanlucy.alterna.util.ConchShellEffect;
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -36,6 +38,12 @@ public class ConchShellItem extends InstrumentItem {
 
                     livingEntity.addEffect(new MobEffectInstance(AlternaMobEffects.LORD_OF_THE_SKIES, 24000, 0, true, true));
                     livingEntity.removeEffect(MobEffects.CONDUIT_POWER);
+
+                    for (ServerPlayer player : serverLevel.players()) {
+                        if (player != livingEntity) {
+                            player.displayClientMessage(Component.translatable(effect.serverMessage(), livingEntity.getDisplayName()), true);
+                        }
+                    }
                 }
             });
         }

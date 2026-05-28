@@ -11,10 +11,11 @@ import net.minecraft.world.item.Instrument;
 
 import java.util.HashMap;
 
-public record ConchShellEffect(IntProvider clearTime, IntProvider weatherTime, boolean raining, boolean thundering) {
+public record ConchShellEffect(String serverMessage, IntProvider clearTime, IntProvider weatherTime, boolean raining,
+                               boolean thundering) {
     public static final HashMap<Holder<Instrument>, ConchShellEffect> INSTRUMENT_TO_EFFECT_MAP = Util.make(Maps.newHashMap(), map -> {
-        map.put(AlternaInstruments.POUR_CONCH_SHELL, new ConchShellEffect(ConstantInt.of(0), ServerLevel.RAIN_DURATION, true, false));
-        map.put(AlternaInstruments.ROAR_CONCH_SHELL, new ConchShellEffect(ConstantInt.of(0), ServerLevel.THUNDER_DURATION, true, true));
-        map.put(AlternaInstruments.SHINE_CONCH_SHELL, new ConchShellEffect(ServerLevel.RAIN_DELAY, ConstantInt.of(0), false, false));
+        map.put(AlternaInstruments.POUR_CONCH_SHELL, new ConchShellEffect("item.alterna.conch_shell.server_message.pour", ConstantInt.of(0), ServerLevel.RAIN_DURATION, true, false));
+        map.put(AlternaInstruments.ROAR_CONCH_SHELL, new ConchShellEffect("item.alterna.conch_shell.server_message.roar", ConstantInt.of(0), ServerLevel.THUNDER_DURATION, true, true));
+        map.put(AlternaInstruments.SHINE_CONCH_SHELL, new ConchShellEffect("item.alterna.conch_shell.server_message.shine", ServerLevel.RAIN_DELAY, ConstantInt.of(0), false, false));
     });
 }
