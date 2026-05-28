@@ -11,7 +11,9 @@
     "client.DrownedModelMixin",
     "client.EffectRenderingInventoryScreenMixin",
     "client.GuiMixin",
-    "client.ItemInHandLayerMixin"
+    "client.ItemInHandLayerMixin",
+    "client.SplashParticleMixin",
+    "client.WakeParticleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
