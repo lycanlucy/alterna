@@ -1,6 +1,7 @@
 {
   "entries": [
     "alterna:add_to_buried_treasure",
+    "alterna:add_conch_shell_to_fishing_treasure",
     "alterna:remove_trident_from_trial_chambers"
   ],
   "replace": false

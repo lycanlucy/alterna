@@ -6,5 +6,5 @@
       "loot_table_id": "minecraft:chests/trial_chambers/reward"
     }
   ],
-  "table": "minecraft:trident"
+  "item": "minecraft:trident"
 }

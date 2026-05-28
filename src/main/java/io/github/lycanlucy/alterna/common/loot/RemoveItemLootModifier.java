@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 public class RemoveItemLootModifier extends LootModifier {
     public static final MapCodec<RemoveItemLootModifier> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             IGlobalLootModifier.LOOT_CONDITIONS_CODEC.fieldOf("conditions").forGetter(glm -> glm.conditions),
-            BuiltInRegistries.ITEM.byNameCodec().fieldOf("table").forGetter(RemoveItemLootModifier::item)).apply(instance, RemoveItemLootModifier::new));
+            BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(RemoveItemLootModifier::item)).apply(instance, RemoveItemLootModifier::new));
     private final Item item;
 
     public RemoveItemLootModifier(LootItemCondition[] conditionsIn, Item item) {

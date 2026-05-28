@@ -1,0 +1,21 @@
+{
+  "type": "alterna:replace_item",
+  "conditions": [
+    {
+      "chance": 0.5,
+      "condition": "minecraft:random_chance"
+    },
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:gameplay/fishing"
+    }
+  ],
+  "functions": [
+    {
+      "function": "minecraft:set_instrument",
+      "options": "#alterna:conch_shells"
+    }
+  ],
+  "new_item": "alterna:conch_shell",
+  "old_item": "minecraft:nautilus_shell"
+}
