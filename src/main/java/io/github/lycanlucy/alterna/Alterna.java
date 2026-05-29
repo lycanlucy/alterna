@@ -4,7 +4,9 @@ import com.mojang.logging.LogUtils;
 import io.github.lycanlucy.alterna.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
@@ -13,7 +15,7 @@ public class Alterna {
     public static final String MOD_ID = "alterna";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public Alterna(IEventBus modEventBus) {
+    public Alterna(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
         LOGGER.info("Adding deferred registers to the mod bus");
@@ -26,6 +28,9 @@ public class Alterna {
         AlternaInstruments.register(modEventBus);
         AlternaLootModifierSerializers.register(modEventBus);
         AlternaBiomeModifierSerializers.register(modEventBus);
+
+        LOGGER.info("Registering mod configs");
+        modContainer.registerConfig(ModConfig.Type.COMMON, AlternaConfig.SPEC);
     }
 
     public static ResourceLocation modId(String name) {
