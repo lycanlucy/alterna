@@ -1,7 +1,6 @@
 package io.github.lycanlucy.alterna.common.item;
 
 import io.github.lycanlucy.alterna.registry.AlternaMobEffects;
-import io.github.lycanlucy.alterna.util.ConchShellEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;

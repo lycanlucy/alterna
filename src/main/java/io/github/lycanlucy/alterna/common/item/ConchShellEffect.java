@@ -1,4 +1,4 @@
-package io.github.lycanlucy.alterna.util;
+package io.github.lycanlucy.alterna.common.item;
 
 import com.google.common.collect.Maps;
 import io.github.lycanlucy.alterna.registry.AlternaInstruments;
