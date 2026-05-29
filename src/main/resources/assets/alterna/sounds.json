@@ -13,18 +13,18 @@
     "sounds": [
       "alterna:item/conch_shell/pour"
     ],
-    "subtitle": "subtitles.alterna.item.conch_shell.play.pour"
+    "subtitle": "subtitles.alterna.item.conch_shell.play"
   },
   "item.conch_shell.play.roar": {
     "sounds": [
       "alterna:item/conch_shell/roar"
     ],
-    "subtitle": "subtitles.alterna.item.conch_shell.play.roar"
+    "subtitle": "subtitles.alterna.item.conch_shell.play"
   },
   "item.conch_shell.play.shine": {
     "sounds": [
       "alterna:item/conch_shell/shine"
     ],
-    "subtitle": "subtitles.alterna.item.conch_shell.play.shine"
+    "subtitle": "subtitles.alterna.item.conch_shell.play"
   }
 }
