@@ -18,17 +18,14 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     protected int autoSpinAttackTicks;
 
-    @Shadow
-    protected abstract float getWaterSlowDown();
-
     public LivingEntityMixin(EntityType<?> entityType, Level level) {
         super(entityType, level);
     }
 
-    @Inject(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getSpeed()F"))
-    private void fixRiptideMomentumLoss(Vec3 travelVector, CallbackInfo ci, @Local(ordinal = 0) LocalFloatRef waterFriction) {
+    @Inject(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;moveRelative(FLnet/minecraft/world/phys/Vec3;)V", ordinal = 0))
+    private void changeWaterInertiaDuringRiptide(Vec3 travelVector, CallbackInfo ci, @Local(ordinal = 0) LocalFloatRef waterInertia) {
         if (this.autoSpinAttackTicks > 0) {
-            waterFriction.set(this.isSprinting() ? 0.9F : this.getWaterSlowDown());
+            waterInertia.set(0.96F);
         }
     }
 }
