@@ -3,6 +3,7 @@
   "package": "io.github.lycanlucy.alterna.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "ArmorStandItemMixin",
     "ConduitBlockEntityMixin",
     "DrownedMixin",
     "KelpFeatureMixin",
