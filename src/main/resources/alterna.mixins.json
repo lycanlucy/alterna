@@ -5,7 +5,8 @@
   "mixins": [
     "ConduitBlockEntityMixin",
     "DrownedMixin",
-    "KelpFeatureMixin"
+    "KelpFeatureMixin",
+    "LivingEntityMixin"
   ],
   "client": [
     "client.DrownedModelMixin",
