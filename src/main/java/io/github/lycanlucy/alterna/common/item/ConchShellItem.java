@@ -1,5 +1,6 @@
 package io.github.lycanlucy.alterna.common.item;
 
+import io.github.lycanlucy.alterna.config.AlternaAbstractConfig;
 import io.github.lycanlucy.alterna.config.AlternaServerConfig;
 import io.github.lycanlucy.alterna.registry.AlternaMobEffects;
 import net.minecraft.core.Holder;
@@ -46,10 +47,10 @@ public class ConchShellItem extends InstrumentItem {
         livingEntity.removeEffect(MobEffects.CONDUIT_POWER);
 
         for (ServerPlayer player : serverLevel.players()) {
-            Component message = effect.getComponent(AlternaServerConfig.CONCH_SHELL_MSG_NAMED.get() ? player : null);
-            if (player == livingEntity && AlternaServerConfig.CONCH_SHELL_MSG_CLIENT.get()) {
+            Component message = AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_NAMED) ? effect.getTranslationComponent(player) : effect.getTranslationComponent();
+            if (player == livingEntity && AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_CLIENT)) {
                 player.displayClientMessage(message, true);
-            } else if (player != livingEntity && AlternaServerConfig.CONCH_SHELL_MSG_SERVER.get()) {
+            } else if (player != livingEntity && AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_SERVER)) {
                 player.displayClientMessage(message, true);
             }
         }

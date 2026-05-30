@@ -1,22 +1,36 @@
 package io.github.lycanlucy.alterna.config;
 
-import io.github.lycanlucy.alterna.util.ConfigHelper;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class AlternaServerConfig {
-    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+public class AlternaServerConfig extends AlternaAbstractConfig {
+    public static BooleanConfig CONCH_SHELL_MSG_CLIENT;
+    public static BooleanConfig CONCH_SHELL_MSG_SERVER;
+    public static BooleanConfig CONCH_SHELL_MSG_NAMED;
 
-    public static final ModConfigSpec.BooleanValue CONCH_SHELL_MSG_CLIENT = BUILDER
-            .comment(ConfigHelper.CONCH_SHELL_MSG_CLIENT_TOOLTIP)
-            .define(ConfigHelper.CONCH_SHELL_MSG_CLIENT_ID, false);
+    static {
+        SERVER.push("conchShellMessage");
+        CONCH_SHELL_MSG_CLIENT = define(new BooleanConfig(
+                "conchShellMsgClient",
+                "Announce to User",
+                "Whether to display the message to the player that changed the weather",
+                true
+        ), SERVER);
 
-    public static final ModConfigSpec.BooleanValue CONCH_SHELL_MSG_SERVER = BUILDER
-            .comment(ConfigHelper.CONCH_SHELL_MSG_SERVER_TOOLTIP)
-            .define(ConfigHelper.CONCH_SHELL_MSG_SERVER_ID, true);
+        CONCH_SHELL_MSG_SERVER = define(new BooleanConfig(
+                "conchShellMsgServer",
+                "Announce to Others",
+                "Whether to display a message to every other player",
+                true
+        ), SERVER);
 
-    public static final ModConfigSpec.BooleanValue CONCH_SHELL_MSG_NAMED = BUILDER
-            .comment(ConfigHelper.CONCH_SHELL_MSG_NAMED_TOOLTIP)
-            .define(ConfigHelper.CONCH_SHELL_MSG_NAMED_ID, true);
+        CONCH_SHELL_MSG_NAMED = define(new BooleanConfig(
+                "conchShellMsgNamed",
+                "Include Username",
+                "Whether to include the player's username in the message",
+                true
+        ), SERVER);
+        SERVER.pop();
+    }
 
-    public static final ModConfigSpec SPEC = BUILDER.build();
+    public static final ModConfigSpec SPEC = SERVER.build();
 }

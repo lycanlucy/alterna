@@ -3,6 +3,7 @@ package io.github.lycanlucy.alterna.common.biome;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.github.lycanlucy.alterna.config.AlternaAbstractConfig;
 import io.github.lycanlucy.alterna.config.AlternaClientConfig;
 import io.github.lycanlucy.alterna.registry.AlternaBiomeModifierSerializers;
 import net.minecraft.core.Holder;
@@ -28,7 +29,7 @@ public record ModifyEffectsBiomeModifier(HolderSet<Biome> biomes, Optional<Integ
 
     @Override
     public void modify(@NotNull Holder<Biome> biome, @NotNull Phase phase, ModifiableBiomeInfo.BiomeInfo.@NotNull Builder builder) {
-        if (AlternaClientConfig.MODIFY_BIOME_COLORS.get() && phase == Phase.MODIFY && this.biomes.contains(biome)) {
+        if (AlternaAbstractConfig.getBoolean(AlternaClientConfig.MODIFY_BIOME_COLORS) && phase == Phase.MODIFY && this.biomes.contains(biome)) {
             grassColor.ifPresent(value -> builder.getSpecialEffects().grassColorOverride(value));
             foliageColor.ifPresent(value -> builder.getSpecialEffects().foliageColorOverride(value));
             waterColor.ifPresent(value -> builder.getSpecialEffects().waterColor(value));

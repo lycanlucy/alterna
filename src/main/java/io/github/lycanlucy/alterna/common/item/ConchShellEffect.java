@@ -11,7 +11,6 @@ import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Instrument;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 
 public record ConchShellEffect(String name, IntProvider clearTime, IntProvider weatherTime, boolean raining,
@@ -26,16 +25,17 @@ public record ConchShellEffect(String name, IntProvider clearTime, IntProvider w
         map.put(AlternaInstruments.SHINE_CONCH_SHELL, SHINE);
     });
 
-    public Component getComponent(@Nullable Entity included) {
-        if (included != null) {
-            return Component.translatable("item.alterna.conch_shell.message." + name + ".with_name", included.getDisplayName());
-        }
-        return Component.translatable("item.alterna.conch_shell.message." + name);
+    public Component getTranslationComponent(Entity user) {
+        return Component.translatable(getTranslationKey(true), user.getDisplayName());
     }
 
-    public String getTranslationKey(boolean named) {
-        if (named) {
-            return "item.alterna.conch_shell.message." + name + ".with_name";
+    public Component getTranslationComponent() {
+        return Component.translatable(getTranslationKey(false));
+    }
+
+    public String getTranslationKey(boolean includeUserName) {
+        if (includeUserName) {
+            return "item.alterna.conch_shell.message." + name + ".username";
         }
         return "item.alterna.conch_shell.message." + name;
     }
