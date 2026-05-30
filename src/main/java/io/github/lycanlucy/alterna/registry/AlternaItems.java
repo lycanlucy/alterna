@@ -14,8 +14,11 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.HashMap;
+
 public class AlternaItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Alterna.MOD_ID);
+    public static final HashMap<DeferredItem<? extends Item>, String> TRANSLATIONS = new HashMap<>();
 
     public static final DeferredItem<Item> TRIDENT = ITEMS.register("trident", () -> new AlternaTridentItem(new Item.Properties().rarity(Rarity.RARE).durability(250).attributes(AlternaTridentItem.createAttributes(AlternaTridentItem.TRIDENT_BASE_DAMAGE)).component(AlternaDataComponents.TRIDENT_PROPERTIES, new TridentProperties(true, 1, Ingredient.of(Items.PRISMARINE_SHARD), AlternaTridentItem.TRIDENT_BASE_DAMAGE)).component(DataComponents.TOOL, AlternaTridentItem.createToolProperties())));
     public static final DeferredItem<Item> SUNKEN_TRIDENT = ITEMS.register("sunken_trident", () -> new AlternaTridentItem(new Item.Properties().rarity(Rarity.RARE).durability(200).attributes(AlternaTridentItem.createAttributes(AlternaTridentItem.SUNKEN_TRIDENT_BASE_DAMAGE)).component(AlternaDataComponents.TRIDENT_PROPERTIES, new TridentProperties(false, 0, Ingredient.EMPTY, AlternaTridentItem.SUNKEN_TRIDENT_BASE_DAMAGE)).component(DataComponents.TOOL, AlternaTridentItem.createToolProperties())));
@@ -23,5 +26,8 @@ public class AlternaItems {
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
+        TRANSLATIONS.put(TRIDENT, "Trident");
+        TRANSLATIONS.put(SUNKEN_TRIDENT, "Sunken Trident");
+        TRANSLATIONS.put(CONCH_SHELL, "Conch Shell");
     }
 }

@@ -41,5 +41,6 @@ public class AlternaDataGenerator {
         generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, AlternaBiomeModifiers::bootstrap), Set.of(Alterna.MOD_ID)));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaLootModifierProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new AlternaLanguageProvider(packOutput));
     }
 }

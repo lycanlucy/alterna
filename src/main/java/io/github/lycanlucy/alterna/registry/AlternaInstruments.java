@@ -9,8 +9,12 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.HashMap;
+import java.util.function.Supplier;
+
 public class AlternaInstruments {
     public static final DeferredRegister<Instrument> INSTRUMENTS = DeferredRegister.create(Registries.INSTRUMENT, Alterna.MOD_ID);
+    public static final HashMap<Supplier<? extends Instrument>, String> TRANSLATIONS = new HashMap<>();
 
     public static final DeferredHolder<Instrument, Instrument> POUR_CONCH_SHELL = conchShell("pour_conch_shell", AlternaSounds.CONCH_SHELL_PLAY_POUR);
     public static final DeferredHolder<Instrument, Instrument> ROAR_CONCH_SHELL = conchShell("roar_conch_shell", AlternaSounds.CONCH_SHELL_PLAY_ROAR);
@@ -22,5 +26,8 @@ public class AlternaInstruments {
 
     public static void register(IEventBus eventBus) {
         INSTRUMENTS.register(eventBus);
+        TRANSLATIONS.put(POUR_CONCH_SHELL, "Pour");
+        TRANSLATIONS.put(ROAR_CONCH_SHELL, "Roar");
+        TRANSLATIONS.put(SHINE_CONCH_SHELL, "Shine");
     }
 }

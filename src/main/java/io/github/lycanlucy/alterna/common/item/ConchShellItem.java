@@ -27,28 +27,31 @@ public class ConchShellItem extends InstrumentItem {
     @Override
     public void releaseUsing(@NotNull ItemStack stack, @NotNull Level level, @NotNull LivingEntity livingEntity, int timeCharged) {
         super.releaseUsing(stack, level, livingEntity, timeCharged);
-        if (level instanceof ServerLevel serverLevel && livingEntity.hasEffect(MobEffects.CONDUIT_POWER)) {
-            Optional<Holder<Instrument>> instrument = this.getInstrument(stack);
-            instrument.ifPresent(holder -> {
-                if (ConchShellEffect.INSTRUMENT_TO_EFFECT_MAP.containsKey(holder)) {
-                    RandomSource random = serverLevel.getRandom();
-                    ConchShellEffect effect = ConchShellEffect.INSTRUMENT_TO_EFFECT_MAP.get(holder);
+        if (!(level instanceof ServerLevel serverLevel) || !livingEntity.hasEffect(MobEffects.CONDUIT_POWER)) {
+            return;
+        }
 
-                    serverLevel.setWeatherParameters(effect.clearTime().sample(random), effect.weatherTime().sample(random), effect.raining(), effect.thundering());
+        Optional<Holder<Instrument>> instrument = this.getInstrument(stack);
+        instrument.ifPresent(holder -> {
+            if (ConchShellEffect.INSTRUMENT_TO_EFFECT_MAP.containsKey(holder)) {
+                performWeatherChange(livingEntity, serverLevel, serverLevel.getRandom(), ConchShellEffect.INSTRUMENT_TO_EFFECT_MAP.get(holder));
+            }
+        });
+    }
 
-                    livingEntity.addEffect(new MobEffectInstance(AlternaMobEffects.LORD_OF_THE_SKIES, 24000, 0, true, true));
-                    livingEntity.removeEffect(MobEffects.CONDUIT_POWER);
+    protected static void performWeatherChange(LivingEntity livingEntity, ServerLevel serverLevel, RandomSource random, ConchShellEffect effect) {
+        serverLevel.setWeatherParameters(effect.clearTime().sample(random), effect.weatherTime().sample(random), effect.raining(), effect.thundering());
 
-                    if (AlternaServerConfig.CONCH_SHELL_MESSAGE_TYPE.get() == AlternaServerConfig.ConchShellMessageType.NONE) {
-                        return;
-                    }
-                    for (ServerPlayer player : serverLevel.players()) {
-                        Component message = AlternaServerConfig.CONCH_SHELL_MESSAGE_TYPE.get() == AlternaServerConfig.ConchShellMessageType.ANNOUNCE_TO_OTHER_PLAYERS_ANONYMOUSLY ? Component.translatable(effect.serverMessage() + ".anonymous") : Component.translatable(effect.serverMessage(), livingEntity.getDisplayName());
-                        player.displayClientMessage(message, true);
+        livingEntity.addEffect(new MobEffectInstance(AlternaMobEffects.LORD_OF_THE_SKIES, 24000, 0, true, true));
+        livingEntity.removeEffect(MobEffects.CONDUIT_POWER);
 
-                    }
-                }
-            });
+        for (ServerPlayer player : serverLevel.players()) {
+            Component message = effect.getComponent(AlternaServerConfig.CONCH_SHELL_MSG_NAMED.get() ? player : null);
+            if (player == livingEntity && AlternaServerConfig.CONCH_SHELL_MSG_CLIENT.get()) {
+                player.displayClientMessage(message, true);
+            } else if (player != livingEntity && AlternaServerConfig.CONCH_SHELL_MSG_SERVER.get()) {
+                player.displayClientMessage(message, true);
+            }
         }
     }
 }
