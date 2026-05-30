@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:adventure/root",
   "criteria": {
-    "obtain_sunken_trident": {
+    "get_sunken_trident": {
       "conditions": {
         "items": [
           {
@@ -26,7 +26,7 @@
   },
   "requirements": [
     [
-      "obtain_sunken_trident"
+      "get_sunken_trident"
     ]
   ],
   "sends_telemetry_event": true

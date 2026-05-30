@@ -1,12 +1,13 @@
 package io.github.lycanlucy.alterna.data.server;
 
+import com.mojang.datafixers.util.Pair;
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.common.item.ConchShellEffect;
+import io.github.lycanlucy.alterna.data.list.AlternaAdvancements;
 import io.github.lycanlucy.alterna.registry.AlternaEntities;
 import io.github.lycanlucy.alterna.registry.AlternaInstruments;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import io.github.lycanlucy.alterna.registry.AlternaMobEffects;
-import io.github.lycanlucy.alterna.util.AdvancementNames;
 import io.github.lycanlucy.alterna.util.ConfigHelper;
 import net.minecraft.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -33,8 +34,8 @@ public class AlternaLanguageProvider extends LanguageProvider {
         AlternaEntities.TRANSLATIONS.forEach(this::addEntityType);
         AlternaMobEffects.TRANSLATIONS.forEach(this::addEffect);
         AlternaInstruments.TRANSLATIONS.forEach(this::addInstrument);
+        AlternaAdvancements.TRANSLATIONS.forEach(this::addAdvancement);
 
-        addAdvancement(AdvancementNames.NEEDS_A_TOUCH_UP, "Needs a Touch Up", "Obtain a Sunken Trident");
         addSubtitle("event.mob_effect.lord_of_the_skies", "Conduit's power absorbed");
         addSubtitle("item.conch_shell.play", "Conch Shell plays");
 
@@ -63,9 +64,9 @@ public class AlternaLanguageProvider extends LanguageProvider {
         addConfig(key + ".tooltip", name);
     }
 
-    private void addAdvancement(String key, String title, String description) {
-        add(AdvancementNames.title(key).getString(), title);
-        add(AdvancementNames.description(key).getString(), description);
+    private void addAdvancement(AlternaAdvancements.AlternaAdvancement advancement, Pair<String, String> name) {
+        add(AlternaAdvancements.title(advancement.name()), name.getFirst());
+        add(AlternaAdvancements.description(advancement.name()), name.getSecond());
     }
 
     private void addConchShellMessage(ConchShellEffect key, String withPlayerName, String withoutPlayerName) {

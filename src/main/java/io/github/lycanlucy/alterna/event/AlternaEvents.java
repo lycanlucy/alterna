@@ -1,7 +1,7 @@
 package io.github.lycanlucy.alterna.event;
 
 import io.github.lycanlucy.alterna.Alterna;
-import io.github.lycanlucy.alterna.data.server.tag.AlternaItemTags;
+import io.github.lycanlucy.alterna.data.list.AlternaItemTags;
 import io.github.lycanlucy.alterna.util.CreativeModeTabHelper;
 import io.github.lycanlucy.alterna.util.SpecialMobEffect;
 import net.minecraft.sounds.SoundEvents;

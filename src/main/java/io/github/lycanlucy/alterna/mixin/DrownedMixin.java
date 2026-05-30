@@ -2,7 +2,7 @@ package io.github.lycanlucy.alterna.mixin;
 
 import io.github.lycanlucy.alterna.common.entity.AlternaThrownTrident;
 import io.github.lycanlucy.alterna.common.entity.goal.AlternaTridentAttackGoal;
-import io.github.lycanlucy.alterna.data.server.tag.AlternaItemTags;
+import io.github.lycanlucy.alterna.data.list.AlternaItemTags;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;

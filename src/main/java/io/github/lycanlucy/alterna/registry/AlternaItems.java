@@ -4,7 +4,7 @@ import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.common.item.AlternaTridentItem;
 import io.github.lycanlucy.alterna.common.item.ConchShellItem;
 import io.github.lycanlucy.alterna.common.item.TridentProperties;
-import io.github.lycanlucy.alterna.data.server.tag.AlternaInstrumentTags;
+import io.github.lycanlucy.alterna.data.list.AlternaInstrumentTags;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;

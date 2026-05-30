@@ -1,4 +1,4 @@
-package io.github.lycanlucy.alterna.util;
+package io.github.lycanlucy.alterna.data.list;
 
 import io.github.lycanlucy.alterna.Alterna;
 import net.minecraft.core.registries.Registries;

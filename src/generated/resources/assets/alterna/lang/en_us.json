@@ -5,7 +5,7 @@
   "alterna.configuration.conchShellMsgClient": "Conch Shell Client Message",
   "alterna.configuration.conchShellMsgClient.tooltip": "Whether to display a message to a player that changes the weather with a Conch Shell",
   "alterna.configuration.conchShellMsgNamed": "Conch Shell Named Message",
-  "alterna.configuration.conchShellMsgNamed.tooltip": "Whether to show the name of the player that changed the weather in the messages from the above configs",
+  "alterna.configuration.conchShellMsgNamed.tooltip": "Whether to show the name of the player that changed the weather in the Conch Shell message",
   "alterna.configuration.conchShellMsgServer": "Conch Shell Server Message",
   "alterna.configuration.conchShellMsgServer.tooltip": "Whether to display a message to other players when someone changes the weather with a Conch Shell",
   "alterna.configuration.modifyBiomeColors": "Modify Biome Colors",

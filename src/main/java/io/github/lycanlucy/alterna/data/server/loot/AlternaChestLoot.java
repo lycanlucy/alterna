@@ -1,8 +1,8 @@
 package io.github.lycanlucy.alterna.data.server.loot;
 
-import io.github.lycanlucy.alterna.data.server.tag.AlternaInstrumentTags;
+import io.github.lycanlucy.alterna.data.list.AlternaLootTables;
+import io.github.lycanlucy.alterna.data.list.AlternaInstrumentTags;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
-import io.github.lycanlucy.alterna.util.AlternaLootTables;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;

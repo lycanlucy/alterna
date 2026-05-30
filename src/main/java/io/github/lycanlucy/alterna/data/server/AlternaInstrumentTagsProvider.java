@@ -1,7 +1,7 @@
 package io.github.lycanlucy.alterna.data.server;
 
 import io.github.lycanlucy.alterna.Alterna;
-import io.github.lycanlucy.alterna.data.server.tag.AlternaInstrumentTags;
+import io.github.lycanlucy.alterna.data.list.AlternaInstrumentTags;
 import io.github.lycanlucy.alterna.registry.AlternaInstruments;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

@@ -11,5 +11,5 @@ public interface ConfigHelper {
     String CONCH_SHELL_MSG_SERVER_TOOLTIP = "Whether to display a message to other players when someone changes the weather with a Conch Shell";
 
     String CONCH_SHELL_MSG_NAMED_ID = "conchShellMsgNamed";
-    String CONCH_SHELL_MSG_NAMED_TOOLTIP = "Whether to show the name of the player that changed the weather in the messages from the above configs";
+    String CONCH_SHELL_MSG_NAMED_TOOLTIP = "Whether to show the name of the player that changed the weather in the Conch Shell message";
 }

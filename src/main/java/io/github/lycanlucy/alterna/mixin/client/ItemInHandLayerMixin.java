@@ -2,7 +2,7 @@ package io.github.lycanlucy.alterna.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import io.github.lycanlucy.alterna.data.server.tag.AlternaItemTags;
+import io.github.lycanlucy.alterna.data.list.AlternaItemTags;
 import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;

@@ -1,6 +1,6 @@
 package io.github.lycanlucy.alterna.mixin.client;
 
-import io.github.lycanlucy.alterna.data.server.tag.AlternaItemTags;
+import io.github.lycanlucy.alterna.data.list.AlternaItemTags;
 import net.minecraft.client.model.DrownedModel;
 import net.minecraft.client.model.ZombieModel;
 import net.minecraft.client.model.geom.ModelPart;
