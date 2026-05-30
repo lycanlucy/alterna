@@ -1,5 +1,6 @@
 package io.github.lycanlucy.alterna.common.item;
 
+import io.github.lycanlucy.alterna.config.AlternaServerConfig;
 import io.github.lycanlucy.alterna.registry.AlternaMobEffects;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -38,10 +39,13 @@ public class ConchShellItem extends InstrumentItem {
                     livingEntity.addEffect(new MobEffectInstance(AlternaMobEffects.LORD_OF_THE_SKIES, 24000, 0, true, true));
                     livingEntity.removeEffect(MobEffects.CONDUIT_POWER);
 
+                    if (AlternaServerConfig.CONCH_SHELL_MESSAGE_TYPE.get() == AlternaServerConfig.ConchShellMessageType.NONE) {
+                        return;
+                    }
                     for (ServerPlayer player : serverLevel.players()) {
-                        if (player != livingEntity) {
-                            player.displayClientMessage(Component.translatable(effect.serverMessage(), livingEntity.getDisplayName()), true);
-                        }
+                        Component message = AlternaServerConfig.CONCH_SHELL_MESSAGE_TYPE.get() == AlternaServerConfig.ConchShellMessageType.ANNOUNCE_TO_OTHER_PLAYERS_ANONYMOUSLY ? Component.translatable(effect.serverMessage() + ".anonymous") : Component.translatable(effect.serverMessage(), livingEntity.getDisplayName());
+                        player.displayClientMessage(message, true);
+
                     }
                 }
             });

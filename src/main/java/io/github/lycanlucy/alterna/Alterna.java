@@ -1,6 +1,8 @@
 package io.github.lycanlucy.alterna;
 
 import com.mojang.logging.LogUtils;
+import io.github.lycanlucy.alterna.config.AlternaClientConfig;
+import io.github.lycanlucy.alterna.config.AlternaServerConfig;
 import io.github.lycanlucy.alterna.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
@@ -30,7 +32,8 @@ public class Alterna {
         AlternaBiomeModifierSerializers.register(modEventBus);
 
         LOGGER.info("Registering mod configs");
-        modContainer.registerConfig(ModConfig.Type.COMMON, AlternaConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, AlternaClientConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, AlternaServerConfig.SPEC);
     }
 
     public static ResourceLocation modId(String name) {
