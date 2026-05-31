@@ -1,4 +1,5 @@
 {
+  "biomes": "#minecraft:is_ocean",
   "model": "ocean",
   "texture": "alterna:textures/entity/fish/ocean_salmon.png"
 }

@@ -3,6 +3,7 @@
   "package": "io.github.lycanlucy.alterna.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AbstractFishMixin",
     "AbstractSchoolingFishMixin",
     "ArmorStandItemMixin",
     "ConduitBlockEntityMixin",

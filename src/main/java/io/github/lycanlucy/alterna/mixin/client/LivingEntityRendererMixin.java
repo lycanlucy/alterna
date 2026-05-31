@@ -26,11 +26,7 @@ public class LivingEntityRendererMixin<T extends LivingEntity, M extends EntityM
     @Inject(method = "render(Lnet/minecraft/world/entity/LivingEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At("HEAD"))
     private void changeModel(T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
         if (this instanceof ReplacedModelRenderer renderer && entity.hasData(AlternaAttachments.MOB_VARIANT)) {
-            renderer.alterna$getReplacedModels().forEach(entityModelStringPair -> {
-                if (MobVariant.getFor(entity).model().equals(entityModelStringPair.getSecond())) {
-                    this.model = (M) entityModelStringPair.getFirst();
-                }
-            });
+            renderer.alterna$getReplacedModels().stream().filter(pair -> MobVariant.getFor(entity).model().equals(pair.getSecond())).findFirst().ifPresent(pair -> this.model = (M) pair.getFirst());
         }
     }
 

@@ -3,7 +3,11 @@ package io.github.lycanlucy.alterna.event;
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import io.github.lycanlucy.alterna.data.bootstrap.AlternaBiomeModifiers;
-import io.github.lycanlucy.alterna.data.server.*;
+import io.github.lycanlucy.alterna.data.list.AlternaRegistries;
+import io.github.lycanlucy.alterna.data.server.AlternaAdvancementProvider;
+import io.github.lycanlucy.alterna.data.server.AlternaLanguageProvider;
+import io.github.lycanlucy.alterna.data.server.AlternaLootModifierProvider;
+import io.github.lycanlucy.alterna.data.server.AlternaRecipeProvider;
 import io.github.lycanlucy.alterna.data.server.loot.AlternaChestLoot;
 import io.github.lycanlucy.alterna.data.server.tag.*;
 import net.minecraft.core.HolderLookup;
@@ -15,7 +19,6 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -33,6 +36,8 @@ public class AlternaDataGenerator {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
+        event.createDatapackRegistryObjects(new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, AlternaBiomeModifiers::bootstrap).add(AlternaRegistries.MOB_VARIANT, MobVariant::bootstrap));
+
         BlockTagsProvider blockTags = generator.addProvider(event.includeServer(), new AlternaBlockTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaInstrumentTagsProvider(packOutput, lookupProvider, existingFileHelper));
@@ -40,7 +45,6 @@ public class AlternaDataGenerator {
 
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, AlternaBiomeModifiers::bootstrap).add(AlternaRegistries.MOB_VARIANT, MobVariant::bootstrap), Set.of(Alterna.MOD_ID)));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaLootModifierProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeClient(), new AlternaLanguageProvider(packOutput));
