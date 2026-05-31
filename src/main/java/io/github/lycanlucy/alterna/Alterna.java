@@ -30,6 +30,7 @@ public class Alterna {
         AlternaInstruments.register(modEventBus);
         AlternaLootModifierSerializers.register(modEventBus);
         AlternaBiomeModifierSerializers.register(modEventBus);
+        AlternaAttachments.register(modEventBus);
 
         LOGGER.info("Registering mod configs");
         modContainer.registerConfig(ModConfig.Type.CLIENT, AlternaClientConfig.SPEC);

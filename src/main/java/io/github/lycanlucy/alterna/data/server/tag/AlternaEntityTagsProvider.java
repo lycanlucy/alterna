@@ -1,4 +1,4 @@
-package io.github.lycanlucy.alterna.data.server;
+package io.github.lycanlucy.alterna.data.server.tag;
 
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.registry.AlternaEntities;

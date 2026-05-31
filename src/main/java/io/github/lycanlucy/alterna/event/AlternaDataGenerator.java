@@ -1,9 +1,11 @@
 package io.github.lycanlucy.alterna.event;
 
 import io.github.lycanlucy.alterna.Alterna;
+import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import io.github.lycanlucy.alterna.data.bootstrap.AlternaBiomeModifiers;
 import io.github.lycanlucy.alterna.data.server.*;
 import io.github.lycanlucy.alterna.data.server.loot.AlternaChestLoot;
+import io.github.lycanlucy.alterna.data.server.tag.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataGenerator;
@@ -38,9 +40,9 @@ public class AlternaDataGenerator {
 
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, AlternaBiomeModifiers::bootstrap), Set.of(Alterna.MOD_ID)));
+        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, AlternaBiomeModifiers::bootstrap).add(AlternaRegistries.MOB_VARIANT, MobVariant::bootstrap), Set.of(Alterna.MOD_ID)));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaLootModifierProvider(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new AlternaLanguageProvider(packOutput));
+        generator.addProvider(event.includeClient(), new AlternaLanguageProvider(packOutput));
     }
 }

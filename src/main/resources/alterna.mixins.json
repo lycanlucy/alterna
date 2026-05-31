@@ -3,6 +3,7 @@
   "package": "io.github.lycanlucy.alterna.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AbstractSchoolingFishMixin",
     "ArmorStandItemMixin",
     "ConduitBlockEntityMixin",
     "DrownedMixin",
@@ -14,6 +15,8 @@
     "client.EffectRenderingInventoryScreenMixin",
     "client.GuiMixin",
     "client.ItemInHandLayerMixin",
+    "client.LivingEntityRendererMixin",
+    "client.SalmonRendererMixin",
     "client.SplashParticleMixin",
     "client.WakeParticleMixin"
   ],

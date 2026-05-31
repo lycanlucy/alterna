@@ -49,9 +49,9 @@ public class ConchShellItem extends InstrumentItem {
         for (ServerPlayer player : serverLevel.players()) {
             Component message = AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_NAMED) ? effect.getTranslationComponent(player) : effect.getTranslationComponent();
             if (player == livingEntity && AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_CLIENT)) {
-                player.displayClientMessage(message, true);
+                player.displayClientMessage(message, false);
             } else if (player != livingEntity && AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_SERVER)) {
-                player.displayClientMessage(message, true);
+                player.displayClientMessage(message, false);
             }
         }
     }

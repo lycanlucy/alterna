@@ -19,7 +19,7 @@ public class AlternaServerConfig extends AlternaAbstractConfig {
         CONCH_SHELL_MSG_SERVER = define(new BooleanConfig(
                 "conchShellMsgServer",
                 "Announce to Others",
-                "Whether to display a message to every other player",
+                "Whether to display the message to every other player",
                 true
         ), SERVER);
 

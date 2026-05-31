@@ -1,6 +1,8 @@
 package io.github.lycanlucy.alterna.event;
 
 import io.github.lycanlucy.alterna.Alterna;
+import io.github.lycanlucy.alterna.client.model.OceanSalmonModel;
+import io.github.lycanlucy.alterna.client.model.RiverSalmonModel;
 import io.github.lycanlucy.alterna.client.particle.SlowSpellParticle;
 import io.github.lycanlucy.alterna.client.renderer.AlternaThrownTridentRenderer;
 import io.github.lycanlucy.alterna.registry.AlternaEntities;
@@ -16,6 +18,12 @@ public class AlternaClientEvents {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(AlternaEntities.TRIDENT.get(), AlternaThrownTridentRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(OceanSalmonModel.LAYER_LOCATION, OceanSalmonModel::createBodyLayer);
+        event.registerLayerDefinition(RiverSalmonModel.LAYER_LOCATION, RiverSalmonModel::createBodyLayer);
     }
 
     @SubscribeEvent
