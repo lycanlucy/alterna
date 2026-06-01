@@ -7,6 +7,7 @@ import io.github.lycanlucy.alterna.client.model.OceanSalmonModel;
 import io.github.lycanlucy.alterna.client.model.RiverSalmonModel;
 import io.github.lycanlucy.alterna.client.renderer.ReplacedModelRenderer;
 import io.github.lycanlucy.alterna.common.entity.AquaticSwimmingAnimated;
+import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.SalmonModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -34,8 +35,8 @@ public abstract class SalmonRendererMixin extends MobRenderer<Salmon, SalmonMode
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void changeModel(EntityRendererProvider.Context context, CallbackInfo ci) {
-        alterna$REPLACED_MODELS.add(new Pair<>(new OceanSalmonModel(context.bakeLayer(OceanSalmonModel.LAYER_LOCATION)), "ocean"));
-        alterna$REPLACED_MODELS.add(new Pair<>(new RiverSalmonModel(context.bakeLayer(RiverSalmonModel.LAYER_LOCATION)), "river"));
+        alterna$REPLACED_MODELS.add(new Pair<>(new OceanSalmonModel(context.bakeLayer(OceanSalmonModel.LAYER_LOCATION)), MobVariant.OCEAN_SALMON_MODEL));
+        alterna$REPLACED_MODELS.add(new Pair<>(new RiverSalmonModel(context.bakeLayer(RiverSalmonModel.LAYER_LOCATION)), MobVariant.RIVER_SALMON_MODEL));
     }
 
     @Inject(method = "setupRotations(Lnet/minecraft/world/entity/animal/Salmon;Lcom/mojang/blaze3d/vertex/PoseStack;FFFF)V", at = @At("HEAD"), cancellable = true)

@@ -32,10 +32,13 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 
 public class AlternaThrownTrident extends AbstractArrow {
-    private static final EntityDataAccessor<Byte> ID_LOYALTY = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.BYTE);
-    private static final EntityDataAccessor<Byte> ID_RETURN_SLOT = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.BYTE);
-    private static final EntityDataAccessor<ItemStack> ID_ITEM_STACK = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.ITEM_STACK);
-    private boolean dealtDamage;
+    protected static final EntityDataAccessor<Byte> ID_LOYALTY = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.BYTE);
+    protected static final EntityDataAccessor<Byte> ID_RETURN_SLOT = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.BYTE);
+    protected static final EntityDataAccessor<ItemStack> ID_ITEM_STACK = SynchedEntityData.defineId(AlternaThrownTrident.class, EntityDataSerializers.ITEM_STACK);
+    protected static final String TAG_DEALT_DAMAGE = "DealtDamage";
+    protected static final String TAG_RETURN_SLOT = "ReturnSlot";
+    protected static final String TAG_ITEM_STACK = "ItemStack";
+    protected boolean dealtDamage;
     public int clientSideReturnTridentTickCount;
 
     public AlternaThrownTrident(EntityType<? extends AlternaThrownTrident> entityType, Level level) {
@@ -211,20 +214,20 @@ public class AlternaThrownTrident extends AbstractArrow {
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        this.dealtDamage = compound.getBoolean("DealtDamage");
+        this.dealtDamage = compound.getBoolean(TAG_DEALT_DAMAGE);
         this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(this.getPickupItemStackOrigin()));
-        if (compound.contains("ItemStack", 10)) {
-            this.setItemStack(ItemStack.parse(this.registryAccess(), compound.getCompound("ItemStack")).orElse(this.getDefaultPickupItem()));
+        if (compound.contains(TAG_ITEM_STACK, 10)) {
+            this.setItemStack(ItemStack.parse(this.registryAccess(), compound.getCompound(TAG_ITEM_STACK)).orElse(this.getDefaultPickupItem()));
         }
-        this.setReturnSlot(compound.getByte("ReturnSlot"));
+        this.setReturnSlot(compound.getByte(TAG_RETURN_SLOT));
     }
 
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag compound) {
         super.addAdditionalSaveData(compound);
-        compound.putBoolean("DealtDamage", this.dealtDamage);
-        compound.put("ItemStack", this.getItemStack().save(this.registryAccess()));
-        compound.putByte("ReturnSlot", this.getReturnSlot());
+        compound.putBoolean(TAG_DEALT_DAMAGE, this.dealtDamage);
+        compound.put(TAG_ITEM_STACK, this.getItemStack().save(this.registryAccess()));
+        compound.putByte(TAG_RETURN_SLOT, this.getReturnSlot());
     }
 
     private byte getLoyaltyFromItem(ItemStack stack) {

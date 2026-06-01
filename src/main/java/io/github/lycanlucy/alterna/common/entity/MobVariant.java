@@ -24,10 +24,12 @@ public record MobVariant(ResourceLocation texture, String model, HolderSet<Biome
     public static final Codec<MobVariant> CODEC = RecordCodecBuilder.create(instance -> instance.group(ResourceLocation.CODEC.fieldOf("texture").forGetter(MobVariant::texture), Codec.STRING.fieldOf("model").forGetter(MobVariant::model), RegistryCodecs.homogeneousList(Registries.BIOME).fieldOf("biomes").forGetter(MobVariant::biomes)).apply(instance, MobVariant::new));
     public static final ResourceKey<MobVariant> OCEAN_SALMON = key("ocean_salmon");
     public static final ResourceKey<MobVariant> RIVER_SALMON = key("river_salmon");
+    public static final String OCEAN_SALMON_MODEL = "ocean";
+    public static final String RIVER_SALMON_MODEL = "river";
 
     public static void bootstrap(BootstrapContext<MobVariant> context) {
-        context.register(OCEAN_SALMON, new MobVariant(Alterna.modId("textures/entity/fish/ocean_salmon.png"), "ocean", context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_OCEAN)));
-        context.register(RIVER_SALMON, new MobVariant(Alterna.modId("textures/entity/fish/river_salmon.png"), "river", context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_RIVER)));
+        context.register(OCEAN_SALMON, new MobVariant(Alterna.modId("textures/entity/fish/ocean_salmon.png"), OCEAN_SALMON_MODEL, context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_OCEAN)));
+        context.register(RIVER_SALMON, new MobVariant(Alterna.modId("textures/entity/fish/river_salmon.png"), RIVER_SALMON_MODEL, context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_RIVER)));
     }
 
     public static Optional<Holder.Reference<MobVariant>> getSpawnVariant(Entity entity, TagKey<MobVariant> tag, Holder<Biome> biome) {

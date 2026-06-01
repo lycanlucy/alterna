@@ -16,7 +16,7 @@ public class AlternaMobEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, Alterna.MOD_ID);
     public static final HashMap<Supplier<? extends MobEffect>, String> TRANSLATIONS = new HashMap<>();
 
-    public static final DeferredHolder<MobEffect, MobEffect> LORD_OF_THE_SKIES = MOB_EFFECTS.register("lord_of_the_skies", () -> new LordOfTheSkiesMobEffect(MobEffectCategory.BENEFICIAL, 0x86b78f, AlternaParticles.LORD_OF_THE_SKIES).withSoundOnAdded(AlternaSounds.APPLY_EFFECT_LORD_OF_THE_SKIES.get()));
+    public static final DeferredHolder<MobEffect, MobEffect> LORD_OF_THE_SKIES = MOB_EFFECTS.register("lord_of_the_skies", () -> new LordOfTheSkiesMobEffect(MobEffectCategory.BENEFICIAL, 0x919191, AlternaParticles.LORD_OF_THE_SKIES).withSoundOnAdded(AlternaSounds.APPLY_EFFECT_LORD_OF_THE_SKIES.get()));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);
