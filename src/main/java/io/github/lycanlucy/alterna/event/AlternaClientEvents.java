@@ -5,6 +5,8 @@ import io.github.lycanlucy.alterna.client.model.OceanSalmonModel;
 import io.github.lycanlucy.alterna.client.model.RiverSalmonModel;
 import io.github.lycanlucy.alterna.client.particle.SlowSpellParticle;
 import io.github.lycanlucy.alterna.client.renderer.AlternaThrownTridentRenderer;
+import io.github.lycanlucy.alterna.client.renderer.ItemRackRenderer;
+import io.github.lycanlucy.alterna.registry.AlternaBlockEntities;
 import io.github.lycanlucy.alterna.registry.AlternaEntities;
 import io.github.lycanlucy.alterna.registry.AlternaParticles;
 import net.neoforged.api.distmarker.Dist;
@@ -18,6 +20,7 @@ public class AlternaClientEvents {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(AlternaEntities.TRIDENT.get(), AlternaThrownTridentRenderer::new);
+        event.registerBlockEntityRenderer(AlternaBlockEntities.ITEM_RACK.get(), ItemRackRenderer::new);
     }
 
     @SubscribeEvent

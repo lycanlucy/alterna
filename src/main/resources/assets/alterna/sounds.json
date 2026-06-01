@@ -1,4 +1,28 @@
 {
+  "block.item_rack.add_item": {
+    "sounds": [
+      "alterna:block/item_rack/add_item1",
+      "alterna:block/item_rack/add_item2",
+      "alterna:block/item_rack/add_item3"
+    ],
+    "subtitle": "subtitles.alterna.block.item_rack.add_item"
+  },
+  "block.item_rack.remove_item": {
+    "sounds": [
+      "alterna:block/item_rack/remove_item1",
+      "alterna:block/item_rack/remove_item2",
+      "alterna:block/item_rack/remove_item3"
+    ],
+    "subtitle": "subtitles.alterna.block.item_rack.remove_item"
+  },
+  "block.item_rack.rotate_item": {
+    "sounds": [
+      "alterna:block/item_rack/rotate_item1",
+      "alterna:block/item_rack/rotate_item2",
+      "alterna:block/item_rack/rotate_item3"
+    ],
+    "subtitle": "subtitles.alterna.block.item_rack.rotate_item"
+  },
   "event.mob_effect.lord_of_the_skies": {
     "sounds": [
       {

@@ -10,6 +10,11 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 public interface CreativeModeTabHelper {
+    static void populateFunctionalBlocks(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() != CreativeModeTabs.FUNCTIONAL_BLOCKS) return;
+        before(event, Items.ITEM_FRAME, AlternaItems.OAK_ITEM_RACK);
+    }
+
     static void populateToolsAndUtilities(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() != CreativeModeTabs.TOOLS_AND_UTILITIES) return;
         event.getParameters().holders().lookup(Registries.INSTRUMENT).ifPresent(instrumentLookup -> instruments(event, instrumentLookup, AlternaItems.CONCH_SHELL.get(), AlternaInstrumentTags.CONCH_SHELLS));

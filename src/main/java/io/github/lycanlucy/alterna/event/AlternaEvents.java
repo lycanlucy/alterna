@@ -40,6 +40,7 @@ public class AlternaEvents {
 
     @SubscribeEvent
     public static void buildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
+        CreativeModeTabHelper.populateFunctionalBlocks(event);
         CreativeModeTabHelper.populateToolsAndUtilities(event);
         CreativeModeTabHelper.populateCombat(event);
     }

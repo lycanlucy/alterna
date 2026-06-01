@@ -3,11 +3,13 @@ package io.github.lycanlucy.alterna.event;
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import io.github.lycanlucy.alterna.data.bootstrap.AlternaBiomeModifiers;
+import io.github.lycanlucy.alterna.data.client.AlternaItemModelProvider;
 import io.github.lycanlucy.alterna.data.list.AlternaRegistries;
 import io.github.lycanlucy.alterna.data.server.AlternaAdvancementProvider;
-import io.github.lycanlucy.alterna.data.server.AlternaLanguageProvider;
+import io.github.lycanlucy.alterna.data.client.AlternaLanguageProvider;
 import io.github.lycanlucy.alterna.data.server.AlternaLootModifierProvider;
 import io.github.lycanlucy.alterna.data.server.AlternaRecipeProvider;
+import io.github.lycanlucy.alterna.data.server.loot.AlternaBlockLoot;
 import io.github.lycanlucy.alterna.data.server.loot.AlternaChestLoot;
 import io.github.lycanlucy.alterna.data.server.tag.*;
 import net.minecraft.core.HolderLookup;
@@ -45,8 +47,9 @@ public class AlternaDataGenerator {
 
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
+        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaBlockLoot::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaLootModifierProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeClient(), new AlternaItemModelProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new AlternaLanguageProvider(packOutput));
     }
 }

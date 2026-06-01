@@ -6,6 +6,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 public class AlternaItemTags {
+    public static final TagKey<Item> ITEM_RACKS = tag("item_racks");
     public static final TagKey<Item> TRIDENTS = tag("tridents");
 
     private static TagKey<Item> tag(String name) {

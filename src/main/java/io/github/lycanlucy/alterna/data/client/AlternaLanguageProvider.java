@@ -1,14 +1,11 @@
-package io.github.lycanlucy.alterna.data.server;
+package io.github.lycanlucy.alterna.data.client;
 
 import com.mojang.datafixers.util.Pair;
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.common.item.ConchShellEffect;
 import io.github.lycanlucy.alterna.config.AlternaAbstractConfig;
 import io.github.lycanlucy.alterna.data.list.AlternaAdvancements;
-import io.github.lycanlucy.alterna.registry.AlternaEntities;
-import io.github.lycanlucy.alterna.registry.AlternaInstruments;
-import io.github.lycanlucy.alterna.registry.AlternaItems;
-import io.github.lycanlucy.alterna.registry.AlternaMobEffects;
+import io.github.lycanlucy.alterna.registry.*;
 import net.minecraft.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -33,6 +30,7 @@ public class AlternaLanguageProvider extends LanguageProvider {
         add("alterna.configuration.conchShellMessage.tooltip", "Configures the message that displays after a player uses a Conch Shell to change the weather");
         add("alterna.configuration.conchShellMessage.button", "Edit Settings");
         add("advancements.adventure.very_very_frightening.description", "Strike a Creeper with lightning");
+        AlternaBlocks.TRANSLATIONS.forEach(this::addBlock);
         AlternaItems.TRANSLATIONS.forEach(this::addItem);
         AlternaEntities.TRANSLATIONS.forEach(this::addEntityType);
         AlternaMobEffects.TRANSLATIONS.forEach(this::addEffect);
@@ -44,6 +42,9 @@ public class AlternaLanguageProvider extends LanguageProvider {
         addConchShellMessage(ConchShellEffect.SHINE, "%s has brought forth clear skies", "Clear skies have been brought forth");
         addSubtitle("event.mob_effect.lord_of_the_skies", "Conduit's power absorbed");
         addSubtitle("item.conch_shell.play", "Conch Shell plays");
+        addSubtitle("block.item_rack.add_item", "Item Rack fills");
+        addSubtitle("block.item_rack.remove_item", "Item Rack empties");
+        addSubtitle("block.item_rack.rotate_item", "Item Rack clicks");
     }
 
     private void addAdvancement(AlternaAdvancements.AlternaAdvancement advancement, Pair<String, String> name) {

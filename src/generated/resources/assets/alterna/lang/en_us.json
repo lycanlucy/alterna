@@ -18,6 +18,7 @@
   "alterna.configuration.section.alterna.server.toml": "Alterna Server Configuration",
   "alterna.configuration.section.alterna.server.toml.title": "Alterna Server Configuration",
   "alterna.configuration.title": "Alterna Configuration",
+  "block.alterna.oak_item_rack": "Oak Item Rack",
   "effect.alterna.lord_of_the_skies": "Lord of the Skies",
   "entity.alterna.trident": "Trident",
   "instrument.alterna.pour_conch_shell": "Pour",
@@ -32,6 +33,9 @@
   "item.alterna.conch_shell.message.shine.username": "%s has brought forth clear skies",
   "item.alterna.sunken_trident": "Sunken Trident",
   "item.alterna.trident": "Trident",
+  "subtitles.alterna.block.item_rack.add_item": "Item Rack fills",
+  "subtitles.alterna.block.item_rack.remove_item": "Item Rack empties",
+  "subtitles.alterna.block.item_rack.rotate_item": "Item Rack clicks",
   "subtitles.alterna.event.mob_effect.lord_of_the_skies": "Conduit's power absorbed",
   "subtitles.alterna.item.conch_shell.play": "Conch Shell plays"
 }

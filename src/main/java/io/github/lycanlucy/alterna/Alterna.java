@@ -21,7 +21,9 @@ public class Alterna {
         modEventBus.addListener(this::commonSetup);
 
         LOGGER.info("Adding deferred registers to the mod bus");
+        AlternaBlocks.register(modEventBus);
         AlternaItems.register(modEventBus);
+        AlternaBlockEntities.register(modEventBus);
         AlternaDataComponents.register(modEventBus);
         AlternaMobEffects.register(modEventBus);
         AlternaEntities.register(modEventBus);

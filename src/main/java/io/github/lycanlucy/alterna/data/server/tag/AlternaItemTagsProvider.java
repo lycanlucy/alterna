@@ -1,6 +1,7 @@
 package io.github.lycanlucy.alterna.data.server.tag;
 
 import io.github.lycanlucy.alterna.Alterna;
+import io.github.lycanlucy.alterna.data.list.AlternaBlockTags;
 import io.github.lycanlucy.alterna.data.list.AlternaItemTags;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.core.HolderLookup;
@@ -22,6 +23,8 @@ public class AlternaItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
+        copy(AlternaBlockTags.ITEM_RACKS, AlternaItemTags.ITEM_RACKS);
+
         tag(AlternaItemTags.TRIDENTS).add(AlternaItems.TRIDENT.get(), AlternaItems.SUNKEN_TRIDENT.get());
 
         tag(Tags.Items.TOOLS_SPEAR).addTag(AlternaItemTags.TRIDENTS);
