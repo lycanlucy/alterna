@@ -7,6 +7,7 @@ import io.github.lycanlucy.alterna.data.client.AlternaItemModelProvider;
 import io.github.lycanlucy.alterna.data.list.AlternaRegistries;
 import io.github.lycanlucy.alterna.data.server.AlternaAdvancementProvider;
 import io.github.lycanlucy.alterna.data.client.AlternaLanguageProvider;
+import io.github.lycanlucy.alterna.data.server.AlternaDataMapProvider;
 import io.github.lycanlucy.alterna.data.server.AlternaLootModifierProvider;
 import io.github.lycanlucy.alterna.data.server.AlternaRecipeProvider;
 import io.github.lycanlucy.alterna.data.server.loot.AlternaBlockLoot;
@@ -45,6 +46,7 @@ public class AlternaDataGenerator {
         generator.addProvider(event.includeServer(), new AlternaInstrumentTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaEntityTagsProvider(packOutput, lookupProvider, existingFileHelper));
 
+        generator.addProvider(event.includeServer(), new AlternaDataMapProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaBlockLoot::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));

@@ -1,14 +1,12 @@
 package io.github.lycanlucy.alterna;
 
 import com.mojang.logging.LogUtils;
-import io.github.lycanlucy.alterna.config.AlternaClientConfig;
-import io.github.lycanlucy.alterna.config.AlternaServerConfig;
+import eu.midnightdust.lib.config.MidnightConfig;
 import io.github.lycanlucy.alterna.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
@@ -35,8 +33,7 @@ public class Alterna {
         AlternaAttachments.register(modEventBus);
 
         LOGGER.info("Registering mod configs");
-        modContainer.registerConfig(ModConfig.Type.CLIENT, AlternaClientConfig.SPEC);
-        modContainer.registerConfig(ModConfig.Type.SERVER, AlternaServerConfig.SPEC);
+        MidnightConfig.init(MOD_ID, AlternaConfig.class);
     }
 
     public static ResourceLocation modId(String name) {

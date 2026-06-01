@@ -1,7 +1,6 @@
 package io.github.lycanlucy.alterna.common.item;
 
-import io.github.lycanlucy.alterna.config.AlternaAbstractConfig;
-import io.github.lycanlucy.alterna.config.AlternaServerConfig;
+import io.github.lycanlucy.alterna.AlternaConfig;
 import io.github.lycanlucy.alterna.registry.AlternaMobEffects;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -47,11 +46,9 @@ public class ConchShellItem extends InstrumentItem {
         livingEntity.removeEffect(MobEffects.CONDUIT_POWER);
 
         for (ServerPlayer player : serverLevel.players()) {
-            Component message = AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_NAMED) ? effect.getTranslationComponent(player) : effect.getTranslationComponent();
-            if (player == livingEntity && AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_CLIENT)) {
-                player.displayClientMessage(message, false);
-            } else if (player != livingEntity && AlternaAbstractConfig.getBoolean(AlternaServerConfig.CONCH_SHELL_MSG_SERVER)) {
-                player.displayClientMessage(message, false);
+            if (AlternaConfig.conchShellMessageType != AlternaConfig.ConchShellMessageType.DO_NOT_ANNOUNCE) {
+                Component message = AlternaConfig.conchShellMessageType == AlternaConfig.ConchShellMessageType.ANNOUNCE_WITH_NAME ? effect.getTranslationComponent(player) : effect.getTranslationComponent();
+                player.displayClientMessage(message, AlternaConfig.conchShellMessageDisplay == AlternaConfig.ConchShellMessageDisplay.ABOVE_HOTBAR);
             }
         }
     }
