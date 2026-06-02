@@ -3,6 +3,7 @@ package io.github.lycanlucy.alterna.data.server.tag;
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.data.list.AlternaBlockTags;
 import io.github.lycanlucy.alterna.data.list.AlternaItemTags;
+import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -35,5 +36,6 @@ public class AlternaItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.BREAKS_DECORATED_POTS).addTag(AlternaItemTags.TRIDENTS);
         tag(ItemTags.TRIDENT_ENCHANTABLE).addTag(AlternaItemTags.TRIDENTS);
+        tag(ItemTags.NON_FLAMMABLE_WOOD).add(AlternaItems.CRIMSON_ITEM_RACK.get(), AlternaItems.WARPED_ITEM_RACK.get());
     }
 }
