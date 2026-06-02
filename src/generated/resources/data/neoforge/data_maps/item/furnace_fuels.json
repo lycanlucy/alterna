@@ -1,4 +1,7 @@
 {
+  "remove": [
+    "#minecraft:non_flammable_wood"
+  ],
   "values": {
     "#alterna:item_racks": {
       "burn_time": 300

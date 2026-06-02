@@ -17,9 +17,18 @@
   },
   "block.item_rack.rotate_item": {
     "sounds": [
-      "alterna:block/item_rack/rotate_item1",
-      "alterna:block/item_rack/rotate_item2",
-      "alterna:block/item_rack/rotate_item3"
+      {
+        "name": "alterna:block/item_rack/rotate_item1",
+        "volume": 0.5
+      },
+      {
+        "name": "alterna:block/item_rack/rotate_item2",
+        "volume": 0.5
+      },
+      {
+        "name": "alterna:block/item_rack/rotate_item3",
+        "volume": 0.5
+      }
     ],
     "subtitle": "subtitles.alterna.block.item_rack.rotate_item"
   },

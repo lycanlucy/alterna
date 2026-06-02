@@ -14,5 +14,15 @@ public class AlternaItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(AlternaItems.OAK_ITEM_RACK.get());
+        basicItem(AlternaItems.SPRUCE_ITEM_RACK.get());
+        basicItem(AlternaItems.BIRCH_ITEM_RACK.get());
+        basicItem(AlternaItems.JUNGLE_ITEM_RACK.get());
+        basicItem(AlternaItems.ACACIA_ITEM_RACK.get());
+        basicItem(AlternaItems.DARK_OAK_ITEM_RACK.get());
+        basicItem(AlternaItems.MANGROVE_ITEM_RACK.get());
+        basicItem(AlternaItems.CHERRY_ITEM_RACK.get());
+        basicItem(AlternaItems.BAMBOO_ITEM_RACK.get());
+        basicItem(AlternaItems.CRIMSON_ITEM_RACK.get());
+        basicItem(AlternaItems.WARPED_ITEM_RACK.get());
     }
 }

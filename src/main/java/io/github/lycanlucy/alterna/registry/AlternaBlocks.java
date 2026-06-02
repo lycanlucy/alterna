@@ -19,17 +19,37 @@ public class AlternaBlocks {
     public static final HashMap<DeferredBlock<? extends Block>, String> TRANSLATIONS = new HashMap<>();
 
     public static final DeferredBlock<Block> OAK_ITEM_RACK = itemRack("oak_item_rack", Blocks.STRIPPED_OAK_LOG.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> SPRUCE_ITEM_RACK = itemRack("spruce_item_rack", Blocks.STRIPPED_SPRUCE_LOG.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> BIRCH_ITEM_RACK = itemRack("birch_item_rack", Blocks.STRIPPED_BIRCH_LOG.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> JUNGLE_ITEM_RACK = itemRack("jungle_item_rack", Blocks.STRIPPED_JUNGLE_LOG.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> ACACIA_ITEM_RACK = itemRack("acacia_item_rack", Blocks.STRIPPED_ACACIA_LOG.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> DARK_OAK_ITEM_RACK = itemRack("dark_oak_item_rack", Blocks.STRIPPED_DARK_OAK_LOG.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> MANGROVE_ITEM_RACK = itemRack("mangrove_item_rack", Blocks.STRIPPED_MANGROVE_LOG.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> CHERRY_ITEM_RACK = itemRack("cherry_item_rack", Blocks.STRIPPED_CHERRY_LOG.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> BAMBOO_ITEM_RACK = itemRack("bamboo_item_rack", Blocks.STRIPPED_BAMBOO_BLOCK.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> CRIMSON_ITEM_RACK = itemRack("crimson_item_rack", Blocks.STRIPPED_CRIMSON_STEM.defaultMapColor(), SoundType.WOOD, false);
+    public static final DeferredBlock<Block> WARPED_ITEM_RACK = itemRack("warped_item_rack", Blocks.STRIPPED_WARPED_STEM.defaultMapColor(), SoundType.WOOD, false);
 
     private static DeferredBlock<Block> itemRack(String name, MapColor mapColor, SoundType soundType, boolean fireImmune) {
         if (fireImmune) {
-            return BLOCKS.register(name, () -> new ItemRackBlock(BlockBehaviour.Properties.of().mapColor(mapColor).sound(soundType).strength(1.0f).noCollission().instrument(NoteBlockInstrument.BASS)));
+            return BLOCKS.register(name, () -> new ItemRackBlock(BlockBehaviour.Properties.of().sound(soundType).strength(1.0f).noCollission().instrument(NoteBlockInstrument.BASS)));
         } else {
-            return BLOCKS.register(name, () -> new ItemRackBlock(BlockBehaviour.Properties.of().mapColor(mapColor).sound(soundType).strength(1.0f).noCollission().instrument(NoteBlockInstrument.BASS).ignitedByLava()));
+            return BLOCKS.register(name, () -> new ItemRackBlock(BlockBehaviour.Properties.of().sound(soundType).strength(1.0f).noCollission().instrument(NoteBlockInstrument.BASS).ignitedByLava()));
         }
     }
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
         TRANSLATIONS.put(OAK_ITEM_RACK, "Oak Item Rack");
+        TRANSLATIONS.put(SPRUCE_ITEM_RACK, "Spruce Item Rack");
+        TRANSLATIONS.put(BIRCH_ITEM_RACK, "Birch Item Rack");
+        TRANSLATIONS.put(JUNGLE_ITEM_RACK, "Jungle Item Rack");
+        TRANSLATIONS.put(ACACIA_ITEM_RACK, "Acacia Item Rack");
+        TRANSLATIONS.put(DARK_OAK_ITEM_RACK, "Dark Oak Item Rack");
+        TRANSLATIONS.put(MANGROVE_ITEM_RACK, "Mangrove Item Rack");
+        TRANSLATIONS.put(CHERRY_ITEM_RACK, "Cherry Item Rack");
+        TRANSLATIONS.put(BAMBOO_ITEM_RACK, "Bamboo Item Rack");
+        TRANSLATIONS.put(CRIMSON_ITEM_RACK, "Crimson Item Rack");
+        TRANSLATIONS.put(WARPED_ITEM_RACK, "Warped Item Rack");
     }
 }

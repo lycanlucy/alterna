@@ -7,6 +7,7 @@ import io.github.lycanlucy.alterna.registry.AlternaSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
@@ -85,7 +86,7 @@ public class ItemRackBlock extends BaseEntityBlock {
 
     @Override
     protected @NotNull ItemInteractionResult useItemOn(@NotNull ItemStack stack, @NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {
-        if (level.getBlockEntity(pos) instanceof ItemRackBlockEntity blockEntity && blockEntity.getItem().isEmpty() && !stack.isEmpty() && !(stack.getItem() instanceof BlockItem)) {
+        if (level.getBlockEntity(pos) instanceof ItemRackBlockEntity blockEntity && blockEntity.getItem().isEmpty() && acceptsItem(stack)) {
             blockEntity.setItem(stack.copyWithCount(1));
 
             if (!player.getAbilities().instabuild) {
@@ -96,6 +97,12 @@ public class ItemRackBlock extends BaseEntityBlock {
             return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+    }
+
+    public static boolean acceptsItem(ItemStack itemStack) {
+        if (itemStack.isEmpty()) return false;
+        if (itemStack.is(ItemTags.SKULLS)) return true;
+        return !(itemStack.getItem() instanceof BlockItem);
     }
 
     @Override
@@ -162,6 +169,19 @@ public class ItemRackBlock extends BaseEntityBlock {
             }
         }
         return null;
+    }
+
+    @Override
+    protected boolean hasAnalogOutputSignal(@NotNull BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(@NotNull BlockState state, Level level, @NotNull BlockPos pos) {
+        if (level.getBlockEntity(pos) instanceof ItemRackBlockEntity blockEntity && !blockEntity.getItem().isEmpty()) {
+            return blockEntity.getRotation() % 8 + 1;
+        }
+        return 0;
     }
 
     @Override

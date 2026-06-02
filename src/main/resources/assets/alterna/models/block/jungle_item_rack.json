@@ -1,0 +1,7 @@
+{
+  "parent": "alterna:block/template_item_rack",
+  "textures": {
+    "front": "alterna:block/jungle_item_rack",
+    "sides": "alterna:block/jungle_item_rack_sides"
+  }
+}

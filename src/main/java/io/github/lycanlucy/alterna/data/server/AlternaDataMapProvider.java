@@ -3,6 +3,7 @@ package io.github.lycanlucy.alterna.data.server;
 import io.github.lycanlucy.alterna.data.list.AlternaItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
@@ -17,6 +18,6 @@ public class AlternaDataMapProvider extends DataMapProvider {
 
     @Override
     protected void gather(HolderLookup.@NotNull Provider provider) {
-        builder(NeoForgeDataMaps.FURNACE_FUELS).add(AlternaItemTags.ITEM_RACKS, new FurnaceFuel(300), false);
+        builder(NeoForgeDataMaps.FURNACE_FUELS).add(AlternaItemTags.ITEM_RACKS, new FurnaceFuel(300), false).remove(ItemTags.NON_FLAMMABLE_WOOD);
     }
 }

@@ -5,7 +5,6 @@ import eu.midnightdust.lib.config.MidnightConfig;
 import io.github.lycanlucy.alterna.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
@@ -15,7 +14,7 @@ public class Alterna {
     public static final String MOD_ID = "alterna";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public Alterna(IEventBus modEventBus, ModContainer modContainer) {
+    public Alterna(IEventBus modEventBus) {
         modEventBus.addListener(this::commonSetup);
 
         LOGGER.info("Adding deferred registers to the mod bus");

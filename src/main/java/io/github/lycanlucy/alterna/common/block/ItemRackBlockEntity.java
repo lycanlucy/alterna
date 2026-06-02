@@ -61,9 +61,16 @@ public class ItemRackBlockEntity extends BlockEntity {
         return item;
     }
 
+    private void markUpdated() {
+        this.setChanged();
+        if (this.getLevel() != null) {
+            this.getLevel().sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
+        }
+    }
+
     public void setItem(ItemStack item) {
         this.item = item;
-        setChanged();
+        markUpdated();
     }
 
     public int getRotation() {
@@ -72,6 +79,6 @@ public class ItemRackBlockEntity extends BlockEntity {
 
     public void setRotation(int rotation) {
         this.rotation = rotation;
-        setChanged();
+        markUpdated();
     }
 }

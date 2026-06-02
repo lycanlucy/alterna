@@ -47,7 +47,7 @@ public class ConchShellItem extends InstrumentItem {
 
         for (ServerPlayer player : serverLevel.players()) {
             if (AlternaConfig.conchShellMessageType != AlternaConfig.ConchShellMessageType.DO_NOT_ANNOUNCE) {
-                Component message = AlternaConfig.conchShellMessageType == AlternaConfig.ConchShellMessageType.ANNOUNCE_WITH_NAME ? effect.getTranslationComponent(player) : effect.getTranslationComponent();
+                Component message = AlternaConfig.conchShellMessageType == AlternaConfig.ConchShellMessageType.ANNOUNCE_WITH_NAME ? effect.getTranslationComponent(livingEntity) : effect.getTranslationComponent();
                 player.displayClientMessage(message, AlternaConfig.conchShellMessageDisplay == AlternaConfig.ConchShellMessageDisplay.ABOVE_HOTBAR);
             }
         }

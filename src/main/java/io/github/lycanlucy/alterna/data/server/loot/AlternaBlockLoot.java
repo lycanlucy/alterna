@@ -17,6 +17,16 @@ public class AlternaBlockLoot extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(AlternaBlocks.OAK_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.SPRUCE_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.BIRCH_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.JUNGLE_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.ACACIA_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.DARK_OAK_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.MANGROVE_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.CHERRY_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.BAMBOO_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.CRIMSON_ITEM_RACK.get());
+        dropSelf(AlternaBlocks.WARPED_ITEM_RACK.get());
     }
 
     @Override

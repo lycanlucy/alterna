@@ -1,5 +1,15 @@
 {
   "values": [
-    "alterna:oak_item_rack"
+    "alterna:oak_item_rack",
+    "alterna:spruce_item_rack",
+    "alterna:birch_item_rack",
+    "alterna:jungle_item_rack",
+    "alterna:acacia_item_rack",
+    "alterna:dark_oak_item_rack",
+    "alterna:mangrove_item_rack",
+    "alterna:cherry_item_rack",
+    "alterna:bamboo_item_rack",
+    "alterna:crimson_item_rack",
+    "alterna:warped_item_rack"
   ]
 }
