@@ -10,6 +10,8 @@
     "requireAnnotations": true
   },
   "client": [
+    "BiomeColorsMixin",
+    "FogRendererMixin",
     "LivingEntityRendererMixin",
     "SalmonRendererMixin"
   ]

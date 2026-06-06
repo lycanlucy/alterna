@@ -30,4 +30,9 @@ public class AlternaClientEvents {
             }
         }, Items.SALMON_SPAWN_EGG);
     }
+
+    @SubscribeEvent
+    public static void registerColorResolvers(RegisterColorHandlersEvent.ColorResolvers event) {
+        event.register(AlternaClientColors.WATER_COLOR_RESOLVER);
+    }
 }

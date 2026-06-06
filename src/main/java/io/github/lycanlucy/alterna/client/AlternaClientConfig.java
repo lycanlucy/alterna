@@ -14,13 +14,23 @@ public class AlternaClientConfig {
         SPEC = pair.getRight();
     }
 
+    public final ModConfigSpec.BooleanValue modifyBiomeColors;
     public final ModConfigSpec.BooleanValue redesignSalmon;
+    public boolean wasModifyBiomeColorsEnabled;
     public boolean wasRedesignSalmonEnabled;
 
     private AlternaClientConfig(ModConfigSpec.Builder builder) {
+        modifyBiomeColors = builder.comment("Toggles the mod's biome color modifications")
+                .translation("alterna.config.modify_biome_colors")
+                .define("modify_biome_colors", true);
+
         redesignSalmon = builder.comment("Toggles the Salmon redesign and variants")
                 .translation("alterna.config.redesign_salmon")
                 .define("redesign_salmon", true);
+    }
+
+    public static boolean modifyBiomeColors() {
+        return CONFIG.modifyBiomeColors.getAsBoolean();
     }
 
     public static boolean redesignSalmon() {

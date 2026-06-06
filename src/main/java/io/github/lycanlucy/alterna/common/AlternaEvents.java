@@ -2,10 +2,12 @@ package io.github.lycanlucy.alterna.common;
 
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.client.AlternaBuiltinPacks;
+import io.github.lycanlucy.alterna.client.AlternaClientColors;
 import io.github.lycanlucy.alterna.client.AlternaClientConfig;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import io.github.lycanlucy.alterna.common.tag.AlternaMobVariantTags;
 import io.github.lycanlucy.alterna.registry.AlternaAttachments;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.server.packs.PackType;
@@ -20,6 +22,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
@@ -42,6 +45,7 @@ public class AlternaEvents {
     @SubscribeEvent
     public static void onConfigLoad(ModConfigEvent.Loading event) {
         if (event.getConfig().getSpec() == AlternaClientConfig.SPEC) {
+            AlternaClientConfig.CONFIG.wasModifyBiomeColorsEnabled = AlternaClientConfig.modifyBiomeColors();
             AlternaClientConfig.CONFIG.wasRedesignSalmonEnabled = AlternaClientConfig.redesignSalmon();
         }
     }
@@ -49,6 +53,10 @@ public class AlternaEvents {
     @SubscribeEvent
     public static void onConfigReload(ModConfigEvent.Reloading event) {
         if (event.getConfig().getSpec() == AlternaClientConfig.SPEC) {
+            if (AlternaClientConfig.CONFIG.wasModifyBiomeColorsEnabled != AlternaClientConfig.modifyBiomeColors()) {
+                AlternaClientConfig.CONFIG.wasModifyBiomeColorsEnabled = AlternaClientConfig.modifyBiomeColors();
+                Minecraft.getInstance().delayTextureReload();
+            }
             AlternaClientConfig.CONFIG.wasRedesignSalmonEnabled = AlternaBuiltinPacks.checkAddAndReload(AlternaBuiltinPacks.SALMON.toString(), AlternaClientConfig.redesignSalmon());
         }
     }
@@ -56,6 +64,13 @@ public class AlternaEvents {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         event.createDatapackRegistryObjects(new RegistrySetBuilder().add(MobVariant.REGISTRY, MobVariant::bootstrap));
+    }
+
+    @SubscribeEvent
+    public static void onLevelLoad(LevelEvent.Load event) {
+        if (event.getLevel().isClientSide()) {
+            AlternaClientColors.initializeBiomeColors(event.getLevel());
+        }
     }
 
     @SubscribeEvent
