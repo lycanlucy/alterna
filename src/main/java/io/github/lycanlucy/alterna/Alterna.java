@@ -2,6 +2,7 @@ package io.github.lycanlucy.alterna;
 
 import com.mojang.logging.LogUtils;
 import io.github.lycanlucy.alterna.client.AlternaClientConfig;
+import io.github.lycanlucy.alterna.registry.AlternaAttachments;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -17,15 +18,10 @@ public class Alterna {
 
     public Alterna(IEventBus modEventBus, ModContainer container) {
         modEventBus.addListener(this::commonSetup);
-
+        AlternaAttachments.register(modEventBus);
         container.registerConfig(ModConfig.Type.CLIENT, AlternaClientConfig.SPEC);
     }
 
-    /**
-     *
-     * @param path the object's ID
-     * @return a new {@link net.minecraft.resources.ResourceLocation} with the mod's namespace and the given path
-     */
     public static ResourceLocation id(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
