@@ -1,0 +1,13 @@
+{
+  "itemGroup.alterna": "Example Mod Tab",
+  "block.alterna.example_block": "Example Block",
+  "item.alterna.example_item": "Example Item",
+
+  "alterna.configuration.title": "Alterna Configs",
+  "alterna.configuration.section.alterna.common.toml": "Alterna Configs",
+  "alterna.configuration.section.alterna.common.toml.title": "Alterna Configs",
+  "alterna.configuration.items": "Item List",
+  "alterna.configuration.logDirtBlock": "Log Dirt Block",
+  "alterna.configuration.magicNumberIntroduction": "Magic Number Text",
+  "alterna.configuration.magicNumber": "Magic Number"
+}
