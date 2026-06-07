@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "alterna:item/glider_dyed_broken",
+    "layer1": "alterna:item/glider_dyed_broken_overlay"
+  }
+}

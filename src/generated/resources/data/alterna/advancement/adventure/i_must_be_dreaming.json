@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "spawned_phantoms": {
+      "trigger": "alterna:spawned_phantoms"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.alterna.adventure.i_must_be_dreaming.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:phantom_membrane"
+    },
+    "title": {
+      "translate": "advancements.alterna.adventure.i_must_be_dreaming.title"
+    }
+  },
+  "requirements": [
+    [
+      "spawned_phantoms"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

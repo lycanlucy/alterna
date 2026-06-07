@@ -1,0 +1,61 @@
+{
+  "item.glider.boost": {
+    "sounds": [
+      {
+        "name": "alterna:item/glider/boost1",
+        "volume": 0.6
+      },
+      {
+        "name": "alterna:item/glider/boost2",
+        "volume": 0.6
+      },
+      {
+        "name": "alterna:item/glider/boost3",
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.alterna.item.glider.boost"
+  },
+  "item.glider.close": {
+    "sounds": [
+      {
+        "name": "alterna:item/glider/close1",
+        "volume": 0.6
+      },
+      {
+        "name": "alterna:item/glider/close2",
+        "volume": 0.6
+      },
+      {
+        "name": "alterna:item/glider/close3",
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.alterna.item.glider.close"
+  },
+  "item.glider.glide": {
+    "sounds": [
+      {
+        "name": "alterna:item/glider/glide",
+        "volume": 0.6
+      }
+    ]
+  },
+  "item.glider.open": {
+    "sounds": [
+      {
+        "name": "alterna:item/glider/open1",
+        "volume": 0.6
+      },
+      {
+        "name": "alterna:item/glider/open2",
+        "volume": 0.6
+      },
+      {
+        "name": "alterna:item/glider/open3",
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.alterna.item.glider.open"
+  }
+}

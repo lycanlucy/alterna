@@ -1,0 +1,26 @@
+{
+  "parent": "alterna:adventure/i_must_be_dreaming",
+  "criteria": {
+    "boosted_with_glider": {
+      "trigger": "alterna:boosted_with_glider"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.alterna.adventure.full_of_hot_air.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "alterna:glider"
+    },
+    "title": {
+      "translate": "advancements.alterna.adventure.full_of_hot_air.title"
+    }
+  },
+  "requirements": [
+    [
+      "boosted_with_glider"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

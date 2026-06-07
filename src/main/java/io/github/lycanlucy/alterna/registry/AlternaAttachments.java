@@ -20,6 +20,15 @@ public class AlternaAttachments {
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Float>> SWIM_ROT = ATTACHMENTS.register(
             "swim_rot", () -> AttachmentType.builder(() -> 0.0f).serialize(Codec.FLOAT).sync(ByteBufCodecs.FLOAT).build()
     );
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Integer>> GLIDER_GLIDING_TICKS = ATTACHMENTS.register(
+            "glider_gliding_ticks", () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).sync(ByteBufCodecs.INT).build()
+    );
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Float>> GLIDER_MOMENTUM = ATTACHMENTS.register(
+            "glider_momentum", () -> AttachmentType.builder(() -> 1.0F).serialize(Codec.FLOAT).sync(ByteBufCodecs.FLOAT).build()
+    );
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Boolean>> GLIDER_BOOSTING = ATTACHMENTS.register(
+            "glider_boosting", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).sync(ByteBufCodecs.BOOL).build()
+    );
 
     public static void register(IEventBus eventBus) {
         ATTACHMENTS.register(eventBus);

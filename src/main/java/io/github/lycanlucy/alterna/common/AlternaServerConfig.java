@@ -15,7 +15,9 @@ public class AlternaServerConfig {
     }
 
     public final ModConfigSpec.BooleanValue armorStandArms;
+    public final ModConfigSpec.BooleanValue insomniaFix;
     public final ModConfigSpec.BooleanValue kelpFix;
+    public final ModConfigSpec.BooleanValue opportunisticPhantoms;
     public final ModConfigSpec.DoubleValue riptideWaterInertia;
     public final ModConfigSpec.BooleanValue schoolingFix;
 
@@ -24,9 +26,17 @@ public class AlternaServerConfig {
                 .translation("alterna.config.armor_stand_arms")
                 .define("armor_stand_arms", true);
 
+        insomniaFix = builder.comment("Toggles if the sleep timer won't reset unless the player skips the night or dies.")
+                .translation("alterna.config.insomnia_fix")
+                .define("insomnia_fix", true);
+
         kelpFix = builder.comment("Toggles a fix to the kelp feature that prevents it from breaking immediately upon generation")
                 .translation("alterna.config.kelp_fix")
                 .define("kelp_fix", true);
+
+        opportunisticPhantoms = builder.comment("Toggles if phantoms should only attack players at or below half of their max health")
+                .translation("alterna.config.opportunistic_phantoms")
+                .define("opportunistic_phantoms", true);
 
         riptideWaterInertia = builder.comment("Sets the player's inertia while using a riptide trident in water")
                 .translation("alterna.config.riptide_water_inertia")
@@ -41,8 +51,16 @@ public class AlternaServerConfig {
         return CONFIG.armorStandArms.getAsBoolean();
     }
 
+    public static boolean insomniaFix() {
+        return CONFIG.insomniaFix.getAsBoolean();
+    }
+
     public static boolean kelpFix() {
         return CONFIG.kelpFix.getAsBoolean();
+    }
+
+    public static boolean opportunisticPhantoms() {
+        return CONFIG.opportunisticPhantoms.getAsBoolean();
     }
 
     public static double riptideWaterInertia() {

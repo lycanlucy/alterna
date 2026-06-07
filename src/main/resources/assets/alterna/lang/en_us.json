@@ -1,12 +1,22 @@
 {
+  "advancements.alterna.adventure.full_of_hot_air.description": "Use a Glider over a lit Campfire",
+  "advancements.alterna.adventure.full_of_hot_air.title": "Full of Hot Air",
+  "advancements.alterna.adventure.i_must_be_dreaming.description": "Stay awake long enough to attract Phantoms. Try to avoid injuries for now...",
+  "advancements.alterna.adventure.i_must_be_dreaming.title": "I Must Be Dreaming",
   "alterna.config.aquarium_opacity": "Aquarium Opacity",
   "alterna.config.armor_stand_arms": "Armor Stand Arms",
   "alterna.config.immersive_fish": "Immersive Fish",
+  "alterna.config.insomnia_fix": "Insomnia Fix",
   "alterna.config.kelp_fix": "Kelp Fix",
   "alterna.config.modify_biome_colors": "Modify Biome Colors",
+  "alterna.config.opportunistic_phantoms": "Opportunistic Phantoms",
   "alterna.config.redesign_salmon": "Redesign Salmon",
   "alterna.config.riptide_water_inertia": "Riptide Water Inertia",
   "alterna.config.schooling_fix": "Schooling Fix",
   "alterna.pack.salmon": "Alterna Salmon",
-  "alterna.pack.salmon.description": "Retextures for salmon-related items"
+  "alterna.pack.salmon.description": "Retextures for salmon-related items",
+  "item.alterna.glider": "Glider",
+  "subtitles.alterna.item.glider.boost": "Glider rises",
+  "subtitles.alterna.item.glider.close": "Glider closes",
+  "subtitles.alterna.item.glider.open": "Glider opens"
 }

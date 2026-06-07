@@ -1,0 +1,23 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/item/ItemDisplayContext",
+      "name": "ALTERNA_FIXED_FULLSIZE",
+      "constructor": "(ILjava/lang/String;Ljava/lang/String;)V",
+      "parameters": [
+        -1,
+        "alterna:fixed_fullsize",
+        "FIXED"
+      ]
+    },
+    {
+      "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
+      "name": "ALTERNA_GLIDER",
+      "constructor": "(ZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
+      "parameters": {
+        "class": "io/github/lycanlucy/alterna/common/EnumParams",
+        "field": "GLIDER"
+      }
+    }
+  ]
+}
