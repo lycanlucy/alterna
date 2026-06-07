@@ -19,12 +19,13 @@ import java.util.Optional;
 
 public class AlternaBuiltinPacks {
     public static final ResourceLocation SALMON = Alterna.id("packs/salmon");
+    public static final ResourceLocation TRIDENT = Alterna.id("packs/trident");
 
-    public static void add(AddPackFindersEvent event, ResourceLocation name) {
+    public static void add(AddPackFindersEvent event, ResourceLocation name, String translatableName) {
         if (event.getPackType() != PackType.CLIENT_RESOURCES) return;
         Path path = ModList.get().getModFileById(Alterna.MOD_ID).getFile().findResource(name.getPath());
 
-        Pack pack = Pack.readMetaAndCreate(new PackLocationInfo(name.toString(), Component.translatable("alterna.pack.salmon"), PackSource.BUILT_IN, Optional.empty()), BuiltInPackSource.fromName(packLocationInfo -> new PathPackResources(packLocationInfo, path)), PackType.CLIENT_RESOURCES, new PackSelectionConfig(false, Pack.Position.TOP, false));
+        Pack pack = Pack.readMetaAndCreate(new PackLocationInfo(name.toString(), Component.translatable(translatableName), PackSource.BUILT_IN, Optional.empty()), BuiltInPackSource.fromName(packLocationInfo -> new PathPackResources(packLocationInfo, path)), PackType.CLIENT_RESOURCES, new PackSelectionConfig(false, Pack.Position.TOP, false));
 
         event.addRepositorySource(onLoad -> onLoad.accept(pack));
     }
@@ -32,6 +33,9 @@ public class AlternaBuiltinPacks {
     public static boolean checkAddAndReload(String pack, boolean selected) {
         if (pack.equals(SALMON.toString())) {
             if (AlternaClientConfig.CONFIG.previousRedesignSalmon == selected) return selected;
+        }
+        if (pack.equals(TRIDENT.toString())) {
+            if (AlternaClientConfig.CONFIG.previousRedesignTrident == selected) return selected;
         }
         if (selected) {
             Minecraft.getInstance().getResourcePackRepository().addPack(pack);

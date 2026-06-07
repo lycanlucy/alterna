@@ -21,9 +21,11 @@ public class AlternaClientConfig {
     public final ModConfigSpec.BooleanValue immersiveFish;
     public final ModConfigSpec.BooleanValue modifyBiomeColors;
     public final ModConfigSpec.BooleanValue redesignSalmon;
+    public final ModConfigSpec.BooleanValue redesignTrident;
     public double previousAquariumOpacity;
     public boolean previousModifyBiomeColors;
     public boolean previousRedesignSalmon;
+    public boolean previousRedesignTrident;
 
     private AlternaClientConfig(ModConfigSpec.Builder builder) {
         aquariumOpacity = builder.comment("Sets how opaque water should be when seen behind transparent blocks such as glass")
@@ -45,6 +47,10 @@ public class AlternaClientConfig {
         redesignSalmon = builder.comment("Toggles the salmon redesign and variants")
                 .translation("alterna.config.redesign_salmon")
                 .define("redesign_salmon", true);
+
+        redesignTrident = builder.comment("Toggles the trident redesign")
+                .translation("alterna.config.redesign_trident")
+                .define("redesign_trident", true);
     }
 
     public static double aquariumOpacity() {
@@ -65,6 +71,10 @@ public class AlternaClientConfig {
 
     public static boolean redesignSalmon() {
         return CONFIG.redesignSalmon.getAsBoolean();
+    }
+
+    public static boolean redesignTrident() {
+        return CONFIG.redesignTrident.getAsBoolean();
     }
 
     public enum ConchShellMessageDisplay implements TranslatableEnum {

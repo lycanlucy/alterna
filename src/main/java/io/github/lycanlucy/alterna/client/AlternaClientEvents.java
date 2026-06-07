@@ -5,8 +5,10 @@ import io.github.lycanlucy.alterna.client.layer.GliderLayer;
 import io.github.lycanlucy.alterna.client.model.GliderModel;
 import io.github.lycanlucy.alterna.client.model.OceanSalmonModel;
 import io.github.lycanlucy.alterna.client.model.RiverSalmonModel;
+import io.github.lycanlucy.alterna.client.renderer.ItemRackRenderer;
 import io.github.lycanlucy.alterna.common.EnumParams;
 import io.github.lycanlucy.alterna.common.item.GliderItem;
+import io.github.lycanlucy.alterna.registry.AlternaBlockEntities;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import io.github.lycanlucy.alterna.registry.AlternaParticles;
 import net.minecraft.client.model.HumanoidModel;
@@ -23,6 +25,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
@@ -31,10 +34,20 @@ import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsE
 @EventBusSubscriber(modid = Alterna.MOD_ID, value = Dist.CLIENT)
 public class AlternaClientEvents {
     @SubscribeEvent
+    public static void registerClientReloadListeners(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener(new AlternaReloadListener());
+    }
+
+    @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(OceanSalmonModel.LAYER_LOCATION, OceanSalmonModel::createBodyLayer);
         event.registerLayerDefinition(RiverSalmonModel.LAYER_LOCATION, RiverSalmonModel::createBodyLayer);
         event.registerLayerDefinition(GliderModel.LAYER_LOCATION, GliderModel::createLayer);
+    }
+
+    @SubscribeEvent
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(AlternaBlockEntities.ITEM_RACK.get(), ItemRackRenderer::new);
     }
 
     @SubscribeEvent

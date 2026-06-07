@@ -7,6 +7,7 @@ import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementSubProvider;
@@ -27,6 +28,12 @@ public class AlternaAdvancementProvider extends AdvancementProvider {
     private static final class Generator implements AdvancementProvider.AdvancementGenerator {
         @Override
         public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver, ExistingFileHelper existingFileHelper) {
+            Advancement.Builder.advancement()
+                    .parent(AdvancementSubProvider.createPlaceholder("adventure/root"))
+                    .display(AlternaItems.SUNKEN_TRIDENT, Component.translatable("advancements.alterna.adventure.needs_a_touch_up.title"), Component.translatable("advancements.alterna.adventure.needs_a_touch_up.description"), null, AdvancementType.TASK, true, true, false)
+                    .addCriterion("has_sunken_trident", InventoryChangeTrigger.TriggerInstance.hasItems(AlternaItems.SUNKEN_TRIDENT))
+                    .save(saver, Alterna.id("adventure/needs_a_touch_up"), existingFileHelper);
+            
             AdvancementHolder iMustBeDreaming = Advancement.Builder.advancement()
                     .parent(AdvancementSubProvider.createPlaceholder("adventure/root"))
                     .display(Items.PHANTOM_MEMBRANE, Component.translatable("advancements.alterna.adventure.i_must_be_dreaming.title"), Component.translatable("advancements.alterna.adventure.i_must_be_dreaming.description"), null, AdvancementType.TASK, true, true, false)

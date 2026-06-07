@@ -4,6 +4,9 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "common.ArmorStandItemMixin",
+    "common.ConduitBlockEntityMixin",
+    "common.DrownedMixin",
+    "common.DrownedTridentAttackGoalMixin",
     "common.FollowFlockLeaderGoalMixin",
     "common.ItemMixin",
     "common.KelpFeatureMixin",
@@ -12,6 +15,8 @@
     "common.PhantomSweepAttackGoalMixin",
     "common.ServerLevelMixin",
     "common.ServerPlayerMixin",
+    "common.ThrownTridentMixin",
+    "common.TridentItemMixin",
     "common.TurtleMixin"
   ],
   "injectors": {
@@ -22,16 +27,19 @@
   },
   "client": [
     "client.BiomeColorsMixin",
+    "client.DrownedModelMixin",
     "client.EffectRenderingInventoryScreenMixin",
     "client.FogRendererMixin",
     "client.GuiMixin",
     "client.HumanoidModelMixin",
     "client.ItemInHandLayerMixin",
+    "client.ItemRendererMixin",
     "client.LiquidBlockRendererMixin",
     "client.LivingEntityRendererMixin",
     "client.LocalPlayerMixin",
     "client.SalmonRendererMixin",
     "client.SplashParticleMixin",
+    "client.ThrownTridentRendererMixin",
     "client.WakeParticleMixin"
   ]
 }

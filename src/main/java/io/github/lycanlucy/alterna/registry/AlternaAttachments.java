@@ -5,6 +5,8 @@ import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -28,6 +30,12 @@ public class AlternaAttachments {
     );
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<Boolean>> GLIDER_BOOSTING = ATTACHMENTS.register(
             "glider_boosting", () -> AttachmentType.builder(() -> false).serialize(Codec.BOOL).sync(ByteBufCodecs.BOOL).build()
+    );
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Byte>> RETURN_SLOT = ATTACHMENTS.register(
+            "return_slot", () -> AttachmentType.builder(() -> (byte) -1).serialize(Codec.BYTE).sync(ByteBufCodecs.BYTE).build()
+    );
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<ItemStack>> ORIGINAL_STACK = ATTACHMENTS.register(
+            "original_stack", () -> AttachmentType.builder(() -> new ItemStack(Items.TRIDENT)).serialize(ItemStack.CODEC).sync(ItemStack.STREAM_CODEC).build()
     );
 
     public static void register(IEventBus eventBus) {

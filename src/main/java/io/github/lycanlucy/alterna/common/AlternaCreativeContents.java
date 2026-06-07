@@ -10,11 +10,31 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 public class AlternaCreativeContents {
+    static void populateFunctionalBlocks(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() != CreativeModeTabs.FUNCTIONAL_BLOCKS) return;
+        before(event, Items.ITEM_FRAME, AlternaItems.OAK_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.SPRUCE_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.BIRCH_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.JUNGLE_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.ACACIA_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.DARK_OAK_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.MANGROVE_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.CHERRY_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.BAMBOO_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.CRIMSON_ITEM_RACK);
+        before(event, Items.ITEM_FRAME, AlternaItems.WARPED_ITEM_RACK);
+    }
+
     static void populateToolsAndUtilities(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() != CreativeModeTabs.TOOLS_AND_UTILITIES) return;
         before(event, Items.ELYTRA, AlternaItems.GLIDER);
         before(event, Items.TADPOLE_BUCKET, AlternaItems.BABY_TURTLE_BUCKET);
         event.getParameters().holders().lookup(Registries.INSTRUMENT).ifPresent(instrumentLookup -> instruments(event, instrumentLookup, AlternaItems.CONCH_SHELL.get(), AlternaInstrumentTags.CONCH_SHELLS));
+    }
+
+    static void populateCombat(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() != CreativeModeTabs.COMBAT) return;
+        before(event, Items.TRIDENT, AlternaItems.SUNKEN_TRIDENT);
     }
 
     // Insert a new stack after the referenced item

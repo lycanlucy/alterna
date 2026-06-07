@@ -9,6 +9,7 @@ import io.github.lycanlucy.alterna.client.data.AlternaItemModelProvider;
 import io.github.lycanlucy.alterna.common.data.*;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import io.github.lycanlucy.alterna.common.item.GliderItem;
+import io.github.lycanlucy.alterna.common.tag.AlternaItemTags;
 import io.github.lycanlucy.alterna.common.tag.AlternaMobEffectTags;
 import io.github.lycanlucy.alterna.common.tag.AlternaMobVariantTags;
 import io.github.lycanlucy.alterna.registry.AlternaAttachments;
@@ -16,12 +17,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -31,20 +35,24 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.EffectCures;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
-import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEvent;
-import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
-import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
@@ -60,7 +68,8 @@ public class AlternaEvents {
     @SubscribeEvent
     public static void addPackFinders(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            AlternaBuiltinPacks.add(event, AlternaBuiltinPacks.SALMON);
+            AlternaBuiltinPacks.add(event, AlternaBuiltinPacks.SALMON, "alterna.pack.salmon");
+            AlternaBuiltinPacks.add(event, AlternaBuiltinPacks.TRIDENT, "alterna.pack.trident");
         }
     }
 
@@ -74,6 +83,7 @@ public class AlternaEvents {
         if (event.getConfig().getSpec() == AlternaClientConfig.SPEC) {
             AlternaClientConfig.CONFIG.previousModifyBiomeColors = AlternaClientConfig.modifyBiomeColors();
             AlternaClientConfig.CONFIG.previousRedesignSalmon = AlternaClientConfig.redesignSalmon();
+            AlternaClientConfig.CONFIG.previousRedesignTrident = AlternaClientConfig.redesignTrident();
         }
     }
 
@@ -89,6 +99,7 @@ public class AlternaEvents {
                 Minecraft.getInstance().delayTextureReload();
             }
             AlternaClientConfig.CONFIG.previousRedesignSalmon = AlternaBuiltinPacks.checkAddAndReload(AlternaBuiltinPacks.SALMON.toString(), AlternaClientConfig.redesignSalmon());
+            AlternaClientConfig.CONFIG.previousRedesignTrident = AlternaBuiltinPacks.checkAddAndReload(AlternaBuiltinPacks.TRIDENT.toString(), AlternaClientConfig.redesignTrident());
         }
     }
 
@@ -112,6 +123,7 @@ public class AlternaEvents {
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaGLMProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new AlternaDataMapProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeClient(), new AlternaItemModelProvider(packOutput, existingFileHelper));
     }
 
@@ -124,7 +136,28 @@ public class AlternaEvents {
 
     @SubscribeEvent
     public static void buildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
+        AlternaCreativeContents.populateFunctionalBlocks(event);
         AlternaCreativeContents.populateToolsAndUtilities(event);
+        AlternaCreativeContents.populateCombat(event);
+    }
+
+    @SubscribeEvent
+    public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+        event.register(EntityType.DROWNED, (entityType, serverLevel, spawnType, pos, random) -> serverLevel.getBiome(pos).is(Biomes.DRIPSTONE_CAVES) && serverLevel.getDifficulty() != Difficulty.PEACEFUL && Monster.isDarkEnoughToSpawn(serverLevel, pos, random) && serverLevel.getFluidState(pos).is(Tags.Fluids.WATER) && random.nextInt(20) == 0);
+    }
+
+    @SubscribeEvent
+    public static void postLivingHurt(LivingDamageEvent.Post event) {
+        if (event.getSource().isDirect() && event.getSource().getEntity() instanceof LivingEntity attacker) {
+            if (attacker.getMainHandItem().is(AlternaItemTags.TRIDENTS)) {
+                attacker.level().playSound(null, attacker.blockPosition(), SoundEvents.TRIDENT_HIT, attacker.getSoundSource(), 1.0F, 1.0F);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
+        event.modify(Items.TRIDENT, builder -> builder.set(DataComponents.RARITY, Rarity.RARE));
     }
 
     @SubscribeEvent

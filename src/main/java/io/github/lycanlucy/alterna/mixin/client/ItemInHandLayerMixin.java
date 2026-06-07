@@ -1,14 +1,21 @@
 package io.github.lycanlucy.alterna.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
+import io.github.lycanlucy.alterna.client.AlternaClientConfig;
 import io.github.lycanlucy.alterna.common.item.GliderItem;
+import io.github.lycanlucy.alterna.common.tag.AlternaItemTags;
 import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,6 +31,18 @@ public abstract class ItemInHandLayerMixin<T extends LivingEntity, M extends Ent
     private void avoidRenderingWhenGliding(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, T pLivingEntity, float pLimbSwing, float pLimbSwingAmount, float pPartialTicks, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch, CallbackInfo ci) {
         if (GliderItem.isGliding(pLivingEntity)) {
             ci.cancel();
+        }
+    }
+
+    @Inject(method = "renderArmWithItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/ItemInHandRenderer;renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V"))
+    private void preRenderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext displayContext, HumanoidArm arm, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
+        if (!AlternaClientConfig.redesignTrident() || !itemStack.is(AlternaItemTags.TRIDENTS) || !(this.getParentModel() instanceof HumanoidModel<?>))
+            return;
+        boolean isRightArmUsingTrident = arm == HumanoidArm.RIGHT && ((HumanoidModel<?>) this.getParentModel()).rightArmPose == HumanoidModel.ArmPose.THROW_SPEAR;
+        boolean isLeftArmUsingTrident = arm == HumanoidArm.LEFT && ((HumanoidModel<?>) this.getParentModel()).leftArmPose == HumanoidModel.ArmPose.THROW_SPEAR;
+
+        if (isRightArmUsingTrident || isLeftArmUsingTrident) {
+            poseStack.mulPose(Axis.ZP.rotationDegrees(180.0f));
         }
     }
 }
