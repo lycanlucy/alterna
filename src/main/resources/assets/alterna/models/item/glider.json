@@ -1,0 +1,27 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "alterna:item/glider"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "alterna:broken": 1
+      },
+      "model": "alterna:item/glider_broken"
+    },
+    {
+      "predicate": {
+        "alterna:dyed": 1
+      },
+      "model": "alterna:item/glider_dyed"
+    },
+    {
+      "predicate": {
+        "alterna:broken": 1,
+        "alterna:dyed": 1
+      },
+      "model": "alterna:item/glider_dyed_broken"
+    }
+  ]
+}

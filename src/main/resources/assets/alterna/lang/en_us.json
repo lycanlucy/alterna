@@ -7,6 +7,10 @@
   "alterna.config.redesign_salmon": "Redesign Salmon",
   "alterna.config.riptide_water_inertia": "Riptide Water Inertia",
   "alterna.config.schooling_fix": "Schooling Fix",
+  "alterna.item.glider": "Glider",
   "alterna.pack.salmon": "Alterna Salmon",
-  "alterna.pack.salmon.description": "Retextures for salmon-related items"
+  "alterna.pack.salmon.description": "Retextures for salmon-related items",
+  "subtitles.alterna.item.glider.boost": "Glider rises",
+  "subtitles.alterna.item.glider.close": "Glider closes",
+  "subtitles.alterna.item.glider.open": "Glider opens"
 }

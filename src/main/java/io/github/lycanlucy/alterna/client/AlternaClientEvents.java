@@ -1,6 +1,7 @@
 package io.github.lycanlucy.alterna.client;
 
 import io.github.lycanlucy.alterna.Alterna;
+import io.github.lycanlucy.alterna.client.model.GliderModel;
 import io.github.lycanlucy.alterna.client.model.OceanSalmonModel;
 import io.github.lycanlucy.alterna.client.model.RiverSalmonModel;
 import net.minecraft.util.FastColor;
@@ -18,6 +19,7 @@ public class AlternaClientEvents {
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(OceanSalmonModel.LAYER_LOCATION, OceanSalmonModel::createBodyLayer);
         event.registerLayerDefinition(RiverSalmonModel.LAYER_LOCATION, RiverSalmonModel::createBodyLayer);
+        event.registerLayerDefinition(GliderModel.LAYER_LOCATION, GliderModel::createLayer);
     }
 
     @SubscribeEvent
