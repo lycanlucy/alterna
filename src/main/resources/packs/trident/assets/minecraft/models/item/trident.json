@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/generated",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "minecraft:item/trident_in_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/trident_inventory"
+    },
+    "ground": {
+      "parent": "minecraft:item/trident_inventory"
+    },
+    "fixed": {
+      "parent": "minecraft:item/trident_inventory"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "alterna:block/dark_oak_item_rack",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "alterna:block/dark_oak_item_rack"
+    },
+    "facing=south": {
+      "model": "alterna:block/dark_oak_item_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "alterna:block/dark_oak_item_rack",
+      "y": 270
+    }
+  }
+}
