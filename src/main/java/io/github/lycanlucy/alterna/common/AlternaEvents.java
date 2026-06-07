@@ -1,13 +1,11 @@
 package io.github.lycanlucy.alterna.common;
 
 import io.github.lycanlucy.alterna.Alterna;
+import io.github.lycanlucy.alterna.bootstrap.AlternaDamageTypes;
 import io.github.lycanlucy.alterna.client.AlternaBuiltinPacks;
 import io.github.lycanlucy.alterna.client.AlternaClientColors;
 import io.github.lycanlucy.alterna.client.AlternaClientConfig;
-import io.github.lycanlucy.alterna.common.data.AlternaAdvancementProvider;
-import io.github.lycanlucy.alterna.common.data.AlternaBlockTagsProvider;
-import io.github.lycanlucy.alterna.common.data.AlternaItemTagsProvider;
-import io.github.lycanlucy.alterna.common.data.AlternaRecipeProvider;
+import io.github.lycanlucy.alterna.common.data.*;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import io.github.lycanlucy.alterna.common.item.GliderItem;
 import io.github.lycanlucy.alterna.common.tag.AlternaMobVariantTags;
@@ -16,10 +14,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,6 +34,7 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
@@ -81,7 +82,7 @@ public class AlternaEvents {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
-        event.createDatapackRegistryObjects(new RegistrySetBuilder().add(MobVariant.REGISTRY, MobVariant::bootstrap));
+        event.createDatapackRegistryObjects(new RegistrySetBuilder().add(Registries.DAMAGE_TYPE, AlternaDamageTypes::bootstrap).add(MobVariant.REGISTRY, MobVariant::bootstrap));
 
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
@@ -92,6 +93,7 @@ public class AlternaEvents {
 
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new AlternaItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new AlternaDamageTypeTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
     }
@@ -125,6 +127,14 @@ public class AlternaEvents {
     public static void onLivingFall(LivingFallEvent event) {
         if (GliderItem.isGliding(event.getEntity())) {
             event.setCanceled(true);
+        }
+    }
+
+
+    @SubscribeEvent
+    public static void modifyLivingVisibility(LivingEvent.LivingVisibilityEvent event) {
+        if (event.getLookingEntity() instanceof LivingEntity livingEntity && livingEntity.hasEffect(MobEffects.BLINDNESS)) {
+            event.modifyVisibility(0.1);
         }
     }
 

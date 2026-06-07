@@ -14,6 +14,8 @@ public class AlternaSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_CLOSE = sound("item.glider.close");
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_GLIDE = sound("item.glider.glide");
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_OPEN = sound("item.glider.open");
+    public static final DeferredHolder<SoundEvent, SoundEvent> GLOW_INK_SAC_SPRAY = sound("item.glow_ink_sac.spray");
+    public static final DeferredHolder<SoundEvent, SoundEvent> INK_SAC_SPRAY = sound("item.ink_sac.spray");
 
     public static DeferredHolder<SoundEvent, SoundEvent> sound(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(Alterna.id(name)));

@@ -57,5 +57,21 @@
       }
     ],
     "subtitle": "subtitles.alterna.item.glider.open"
+  },
+  "item.glow_ink_sac.spray": {
+    "sounds": [
+      "entity/glow_squid/squirt1",
+      "entity/glow_squid/squirt2",
+      "entity/glow_squid/squirt3"
+    ],
+    "subtitle": "subtitles.alterna.item.glow_ink_sac.spray"
+  },
+  "item.ink_sac.spray": {
+    "sounds": [
+      "entity/squid/squirt1",
+      "entity/squid/squirt2",
+      "entity/squid/squirt3"
+    ],
+    "subtitle": "subtitles.alterna.item.ink_sac.spray"
   }
 }

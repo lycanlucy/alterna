@@ -5,6 +5,7 @@
   "mixins": [
     "common.ArmorStandItemMixin",
     "common.FollowFlockLeaderGoalMixin",
+    "common.ItemMixin",
     "common.KelpFeatureMixin",
     "common.LivingEntityMixin",
     "common.PhantomSpawnerMixin",

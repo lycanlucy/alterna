@@ -18,5 +18,6 @@
   "item.alterna.glider": "Glider",
   "subtitles.alterna.item.glider.boost": "Glider rises",
   "subtitles.alterna.item.glider.close": "Glider closes",
-  "subtitles.alterna.item.glider.open": "Glider opens"
+  "subtitles.alterna.item.glider.open": "Glider opens",
+  "death.attack.alterna.ink_sac": "%1$s was splatted by %2$s"
 }
