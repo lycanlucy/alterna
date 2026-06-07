@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "common.ArmorStandItemMixin",
-    "common.KelpFeatureMixin"
+    "common.KelpFeatureMixin",
+    "common.LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

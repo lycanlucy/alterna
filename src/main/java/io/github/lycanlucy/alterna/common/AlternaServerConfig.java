@@ -16,6 +16,7 @@ public class AlternaServerConfig {
 
     public final ModConfigSpec.BooleanValue armorStandArms;
     public final ModConfigSpec.BooleanValue kelpFix;
+    public final ModConfigSpec.DoubleValue riptideWaterInertia;
 
     private AlternaServerConfig(ModConfigSpec.Builder builder) {
         armorStandArms = builder.comment("Toggles armor stands having arms when placed")
@@ -25,6 +26,10 @@ public class AlternaServerConfig {
         kelpFix = builder.comment("If true, Kelp won't generate on top of suspended gravity-affected blocks, preventing them from breaking immediately upon generation")
                 .translation("alterna.config.kelp_fix")
                 .define("kelp_fix", true);
+
+        riptideWaterInertia = builder.comment("Sets the player's inertia while using a riptide trident in water")
+                .translation("alterna.config.riptide_water_inertia")
+                .defineInRange("riptide_water_inertia", 0.96, 0.0, 1.0);
     }
 
     public static boolean armorStandArms() {
@@ -33,5 +38,9 @@ public class AlternaServerConfig {
 
     public static boolean kelpFix() {
         return CONFIG.kelpFix.getAsBoolean();
+    }
+
+    public static double riptideWaterInertia() {
+        return CONFIG.riptideWaterInertia.getAsDouble();
     }
 }
