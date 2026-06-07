@@ -21,6 +21,7 @@ public class Alterna {
         modEventBus.addListener(this::commonSetup);
         AlternaItems.register(modEventBus);
         AlternaMobEffects.register(modEventBus);
+        AlternaInstruments.register(modEventBus);
         AlternaTriggers.register(modEventBus);
         AlternaAttachments.register(modEventBus);
         AlternaParticles.register(modEventBus);

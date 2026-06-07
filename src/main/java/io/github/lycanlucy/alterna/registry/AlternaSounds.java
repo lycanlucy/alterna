@@ -13,6 +13,9 @@ public class AlternaSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> APPLY_EFFECT_LORD_OF_THE_SKIES = sound("event.mob_effect.lord_of_the_skies");
     public static final DeferredHolder<SoundEvent, SoundEvent> BUCKET_EMPTY_BABY_TURTLE = sound("item.bucket.empty_baby_turtle");
     public static final DeferredHolder<SoundEvent, SoundEvent> BUCKET_FILL_BABY_TURTLE = sound("item.bucket.fill_baby_turtle");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CONCH_SHELL_PLAY_POUR = sound("item.conch_shell.play.pour");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CONCH_SHELL_PLAY_ROAR = sound("item.conch_shell.play.roar");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CONCH_SHELL_PLAY_SHINE = sound("item.conch_shell.play.shine");
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_BOOST = sound("item.glider.boost");
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_CLOSE = sound("item.glider.close");
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_GLIDE = sound("item.glider.glide");

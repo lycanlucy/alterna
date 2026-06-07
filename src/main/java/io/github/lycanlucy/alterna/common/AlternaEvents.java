@@ -99,6 +99,7 @@ public class AlternaEvents {
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new AlternaItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaDamageTypeTagsProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new AlternaInstrumentTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeClient(), new AlternaItemModelProvider(packOutput, existingFileHelper));
