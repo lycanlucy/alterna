@@ -1,11 +1,12 @@
 {
-  "alterna.config.riptide_water_inertia": "Riptide Water Inertia",
   "alterna.config.aquarium_opacity": "Aquarium Opacity",
   "alterna.config.armor_stand_arms": "Armor Stand Arms",
   "alterna.config.immersive_fish": "Immersive Fish",
   "alterna.config.kelp_fix": "Kelp Fix",
   "alterna.config.modify_biome_colors": "Modify Biome Colors",
   "alterna.config.redesign_salmon": "Redesign Salmon",
+  "alterna.config.riptide_water_inertia": "Riptide Water Inertia",
+  "alterna.config.schooling_fix": "Schooling Fix",
   "alterna.pack.salmon": "Alterna Salmon",
   "alterna.pack.salmon.description": "Retextures for salmon-related items"
 }

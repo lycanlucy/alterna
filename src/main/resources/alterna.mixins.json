@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "common.ArmorStandItemMixin",
+    "common.FollowFlockLeaderGoalMixin",
     "common.KelpFeatureMixin",
     "common.LivingEntityMixin"
   ],

@@ -17,6 +17,7 @@ public class AlternaServerConfig {
     public final ModConfigSpec.BooleanValue armorStandArms;
     public final ModConfigSpec.BooleanValue kelpFix;
     public final ModConfigSpec.DoubleValue riptideWaterInertia;
+    public final ModConfigSpec.BooleanValue schoolingFix;
 
     private AlternaServerConfig(ModConfigSpec.Builder builder) {
         armorStandArms = builder.comment("Toggles armor stands having arms when placed")
@@ -30,6 +31,10 @@ public class AlternaServerConfig {
         riptideWaterInertia = builder.comment("Sets the player's inertia while using a riptide trident in water")
                 .translation("alterna.config.riptide_water_inertia")
                 .defineInRange("riptide_water_inertia", 0.96, 0.0, 1.0);
+
+        schoolingFix = builder.comment("Toggles a fix to fish randomly stopping")
+                .translation("alterna.config.schooling_fix")
+                .define("schooling_fix", true);
     }
 
     public static boolean armorStandArms() {
@@ -42,5 +47,9 @@ public class AlternaServerConfig {
 
     public static double riptideWaterInertia() {
         return CONFIG.riptideWaterInertia.getAsDouble();
+    }
+
+    public static boolean schoolingFix() {
+        return CONFIG.schoolingFix.getAsBoolean();
     }
 }
