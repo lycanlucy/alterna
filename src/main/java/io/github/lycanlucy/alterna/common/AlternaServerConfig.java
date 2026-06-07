@@ -23,7 +23,7 @@ public class AlternaServerConfig {
                 .translation("alterna.config.armor_stand_arms")
                 .define("armor_stand_arms", true);
 
-        kelpFix = builder.comment("If true, Kelp won't generate on top of suspended gravity-affected blocks, preventing them from breaking immediately upon generation")
+        kelpFix = builder.comment("Toggles a fix to the kelp feature that prevents it from breaking immediately upon generation")
                 .translation("alterna.config.kelp_fix")
                 .define("kelp_fix", true);
 

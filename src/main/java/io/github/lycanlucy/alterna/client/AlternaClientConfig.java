@@ -35,7 +35,7 @@ public class AlternaClientConfig {
                 .translation("alterna.config.modify_biome_colors")
                 .define("modify_biome_colors", true);
 
-        redesignSalmon = builder.comment("Toggles the Salmon redesign and variants")
+        redesignSalmon = builder.comment("Toggles the salmon redesign and variants")
                 .translation("alterna.config.redesign_salmon")
                 .define("redesign_salmon", true);
     }
