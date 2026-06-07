@@ -1,13 +1,18 @@
 package io.github.lycanlucy.alterna.client;
 
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.FastColor;
 import net.minecraft.world.level.ColorResolver;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
+import org.joml.Vector3f;
 
 import java.util.List;
 
@@ -19,6 +24,11 @@ public class AlternaClientColors {
 
     public static int salmonSpawnEgg(int tintIndex) {
         return tintIndex == 0 ? 0xa3a6ba : 0x91962a;
+    }
+
+    public static Vector3f particleWaterColor(ClientLevel level, double x, double y, double z) {
+        int waterColor = BiomeColors.getAverageWaterColor(level, BlockPos.containing(x, y, z));
+        return new Vector3f(FastColor.ARGB32.red(waterColor) / 255.0f, FastColor.ARGB32.green(waterColor) / 255.0f, FastColor.ARGB32.blue(waterColor) / 255.0f);
     }
 
     public static void initializeBiomeColors(LevelAccessor level) {

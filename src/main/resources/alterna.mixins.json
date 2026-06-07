@@ -14,6 +14,8 @@
     "client.FogRendererMixin",
     "client.LiquidBlockRendererMixin",
     "client.LivingEntityRendererMixin",
-    "client.SalmonRendererMixin"
+    "client.SalmonRendererMixin",
+    "client.SplashParticleMixin",
+    "client.WakeParticleMixin"
   ]
 }
