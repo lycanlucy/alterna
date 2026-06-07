@@ -1,4 +1,38 @@
 {
+  "item.bucket.empty_baby_turtle": {
+    "sounds": [
+      "item/bucket/empty_fish1",
+      "item/bucket/empty_fish2",
+      "item/bucket/empty_fish3"
+    ],
+    "subtitle": "subtitles.item.bucket.empty"
+  },
+  "item.bucket.fill_baby_turtle": {
+    "sounds": [
+      "alterna:item/bucket/fill_baby_turtle1",
+      "alterna:item/bucket/fill_baby_turtle2",
+      "alterna:item/bucket/fill_baby_turtle3"
+    ],
+    "subtitle": "subtitles.alterna.item.bucket.fill_baby_turtle"
+  },
+  "item.conch_shell.play.pour": {
+    "sounds": [
+      "alterna:item/conch_shell/pour"
+    ],
+    "subtitle": "subtitles.alterna.item.conch_shell.play"
+  },
+  "item.conch_shell.play.roar": {
+    "sounds": [
+      "alterna:item/conch_shell/roar"
+    ],
+    "subtitle": "subtitles.alterna.item.conch_shell.play"
+  },
+  "item.conch_shell.play.shine": {
+    "sounds": [
+      "alterna:item/conch_shell/shine"
+    ],
+    "subtitle": "subtitles.alterna.item.conch_shell.play"
+  },
   "item.glider.boost": {
     "sounds": [
       {
@@ -73,21 +107,5 @@
       "entity/squid/squirt3"
     ],
     "subtitle": "subtitles.alterna.item.ink_sac.spray"
-  },
-  "item.bucket.empty_baby_turtle": {
-    "sounds": [
-      "item/bucket/empty_fish1",
-      "item/bucket/empty_fish2",
-      "item/bucket/empty_fish3"
-    ],
-    "subtitle": "subtitles.item.bucket.empty"
-  },
-  "item.bucket.fill_baby_turtle": {
-    "sounds": [
-      "alterna:item/bucket/fill_baby_turtle1",
-      "alterna:item/bucket/fill_baby_turtle2",
-      "alterna:item/bucket/fill_baby_turtle3"
-    ],
-    "subtitle": "subtitles.alterna.item.bucket.fill_baby_turtle"
   }
 }
