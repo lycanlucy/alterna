@@ -1,6 +1,8 @@
 package io.github.lycanlucy.alterna.common;
 
+import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.TranslatableEnum;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class AlternaServerConfig {
@@ -15,6 +17,7 @@ public class AlternaServerConfig {
     }
 
     public final ModConfigSpec.BooleanValue armorStandArms;
+    public final ModConfigSpec.EnumValue<ConchShellMessage> conchShellMessage;
     public final ModConfigSpec.BooleanValue insomniaFix;
     public final ModConfigSpec.BooleanValue kelpFix;
     public final ModConfigSpec.BooleanValue opportunisticPhantoms;
@@ -26,7 +29,11 @@ public class AlternaServerConfig {
                 .translation("alterna.config.armor_stand_arms")
                 .define("armor_stand_arms", true);
 
-        insomniaFix = builder.comment("Toggles if the sleep timer won't reset unless the player skips the night or dies.")
+        conchShellMessage = builder.comment("Whether to announce when a player uses a conch shell to change the weather")
+                .translation("alterna.config.conch_shell_message")
+                .defineEnum("conch_shell_message", ConchShellMessage.ANNOUNCE_WITH_CAUSE);
+
+        insomniaFix = builder.comment("Toggles if the sleep timer won't reset unless the player skips the night or dies")
                 .translation("alterna.config.insomnia_fix")
                 .define("insomnia_fix", true);
 
@@ -51,6 +58,10 @@ public class AlternaServerConfig {
         return CONFIG.armorStandArms.getAsBoolean();
     }
 
+    public static ConchShellMessage conchShellMessage() {
+        return CONFIG.conchShellMessage.get();
+    }
+
     public static boolean insomniaFix() {
         return CONFIG.insomniaFix.getAsBoolean();
     }
@@ -70,4 +81,30 @@ public class AlternaServerConfig {
     public static boolean schoolingFix() {
         return CONFIG.schoolingFix.getAsBoolean();
     }
+
+    public enum ConchShellMessage implements TranslatableEnum {
+        ANNOUNCE_WITH_CAUSE("alterna.config.announce_with_cause"),
+        ANNOUNCE_WITHOUT_CAUSE("alterna.config.announce_without_cause"),
+        OFF("options.off");
+
+        private final String name;
+
+        ConchShellMessage(String name) {
+            this.name = name;
+        }
+
+        public boolean hasCause() {
+            return this == ANNOUNCE_WITH_CAUSE;
+        }
+
+        public boolean disabled() {
+            return this == OFF;
+        }
+
+        @Override
+        public Component getTranslatedName() {
+            return Component.translatable(name);
+        }
+    }
+
 }

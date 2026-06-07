@@ -23,6 +23,7 @@ public class AlternaClient {
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
+            ItemProperties.register(AlternaItems.CONCH_SHELL.get(), Alterna.id("blowing"), (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0f : 0.0f);
             ItemProperties.register(AlternaItems.GLIDER.get(), Alterna.id("broken"), (stack, level, entity, seed) -> GliderItem.isUsable(stack) ? 0.0f : 1.0f);
             ItemProperties.register(AlternaItems.GLIDER.get(), Alterna.id("dyed"), (stack, level, entity, seed) -> stack.get(DataComponents.DYED_COLOR) == null ? 0.0f : 1.0f);
         });

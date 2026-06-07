@@ -8,7 +8,9 @@ import io.github.lycanlucy.alterna.client.model.RiverSalmonModel;
 import io.github.lycanlucy.alterna.common.EnumParams;
 import io.github.lycanlucy.alterna.common.item.GliderItem;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
+import io.github.lycanlucy.alterna.registry.AlternaParticles;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.FastColor;
@@ -22,6 +24,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 
@@ -42,6 +45,11 @@ public class AlternaClientEvents {
                 skin.addLayer(new GliderLayer<>(skin, event.getEntityModels()));
             }
         });
+    }
+
+    @SubscribeEvent
+    public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(AlternaParticles.LORD_OF_THE_SKIES.get(), SpellParticle.Provider::new);
     }
 
     @SubscribeEvent

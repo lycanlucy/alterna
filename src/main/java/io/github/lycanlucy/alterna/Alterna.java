@@ -3,10 +3,7 @@ package io.github.lycanlucy.alterna;
 import com.mojang.logging.LogUtils;
 import io.github.lycanlucy.alterna.client.AlternaClientConfig;
 import io.github.lycanlucy.alterna.common.AlternaServerConfig;
-import io.github.lycanlucy.alterna.registry.AlternaAttachments;
-import io.github.lycanlucy.alterna.registry.AlternaItems;
-import io.github.lycanlucy.alterna.registry.AlternaSounds;
-import io.github.lycanlucy.alterna.registry.AlternaTriggers;
+import io.github.lycanlucy.alterna.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -23,9 +20,13 @@ public class Alterna {
     public Alterna(IEventBus modEventBus, ModContainer container) {
         modEventBus.addListener(this::commonSetup);
         AlternaItems.register(modEventBus);
+        AlternaMobEffects.register(modEventBus);
+        AlternaInstruments.register(modEventBus);
         AlternaTriggers.register(modEventBus);
         AlternaAttachments.register(modEventBus);
+        AlternaParticles.register(modEventBus);
         AlternaSounds.register(modEventBus);
+        AlternaLootModifiers.register(modEventBus);
         container.registerConfig(ModConfig.Type.CLIENT, AlternaClientConfig.SPEC);
         container.registerConfig(ModConfig.Type.SERVER, AlternaServerConfig.SPEC);
     }

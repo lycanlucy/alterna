@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "alterna:conch_shell"
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:set_instrument",
+          "options": "#alterna:conch_shells"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "alterna:chests/buried_treasure_additions"
+}

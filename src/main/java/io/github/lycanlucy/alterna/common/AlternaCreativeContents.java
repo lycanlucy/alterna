@@ -1,7 +1,9 @@
 package io.github.lycanlucy.alterna.common;
 
+import io.github.lycanlucy.alterna.common.tag.AlternaInstrumentTags;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
@@ -12,6 +14,7 @@ public class AlternaCreativeContents {
         if (event.getTabKey() != CreativeModeTabs.TOOLS_AND_UTILITIES) return;
         before(event, Items.ELYTRA, AlternaItems.GLIDER);
         before(event, Items.TADPOLE_BUCKET, AlternaItems.BABY_TURTLE_BUCKET);
+        event.getParameters().holders().lookup(Registries.INSTRUMENT).ifPresent(instrumentLookup -> instruments(event, instrumentLookup, AlternaItems.CONCH_SHELL.get(), AlternaInstrumentTags.CONCH_SHELLS));
     }
 
     // Insert a new stack after the referenced item

@@ -22,7 +22,9 @@
   },
   "client": [
     "client.BiomeColorsMixin",
+    "client.EffectRenderingInventoryScreenMixin",
     "client.FogRendererMixin",
+    "client.GuiMixin",
     "client.HumanoidModelMixin",
     "client.ItemInHandLayerMixin",
     "client.LiquidBlockRendererMixin",
