@@ -6,7 +6,11 @@
     "common.ArmorStandItemMixin",
     "common.FollowFlockLeaderGoalMixin",
     "common.KelpFeatureMixin",
-    "common.LivingEntityMixin"
+    "common.LivingEntityMixin",
+    "common.PhantomSpawnerMixin",
+    "common.PhantomSweepAttackGoalMixin",
+    "common.ServerLevelMixin",
+    "common.ServerPlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -17,8 +21,11 @@
   "client": [
     "client.BiomeColorsMixin",
     "client.FogRendererMixin",
+    "client.HumanoidModelMixin",
+    "client.ItemInHandLayerMixin",
     "client.LiquidBlockRendererMixin",
     "client.LivingEntityRendererMixin",
+    "client.LocalPlayerMixin",
     "client.SalmonRendererMixin",
     "client.SplashParticleMixin",
     "client.WakeParticleMixin"
