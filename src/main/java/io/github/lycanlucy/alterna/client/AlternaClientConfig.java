@@ -1,6 +1,8 @@
 package io.github.lycanlucy.alterna.client;
 
+import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.TranslatableEnum;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class AlternaClientConfig {
@@ -15,6 +17,7 @@ public class AlternaClientConfig {
     }
 
     public final ModConfigSpec.DoubleValue aquariumOpacity;
+    public final ModConfigSpec.EnumValue<ConchShellMessageDisplay> conchShellMessageDisplay;
     public final ModConfigSpec.BooleanValue immersiveFish;
     public final ModConfigSpec.BooleanValue modifyBiomeColors;
     public final ModConfigSpec.BooleanValue redesignSalmon;
@@ -26,6 +29,10 @@ public class AlternaClientConfig {
         aquariumOpacity = builder.comment("Sets how opaque water should be when seen behind transparent blocks such as glass")
                 .translation("alterna.config.aquarium_opacity")
                 .defineInRange("aquarium_opacity", 0.7, 0.0, 1.0);
+
+        conchShellMessageDisplay = builder.comment("Where to show a message when a player uses a conch shell to change the weather")
+                .translation("alterna.config.conch_shell_message_display")
+                .defineEnum("conch_shell_message_display", ConchShellMessageDisplay.CHAT);
 
         immersiveFish = builder.comment("Toggles the mod's fish and tadpole animations")
                 .translation("alterna.config.immersive_fish")
@@ -44,6 +51,10 @@ public class AlternaClientConfig {
         return CONFIG.aquariumOpacity.getAsDouble();
     }
 
+    public static ConchShellMessageDisplay conchShellMessageDisplay() {
+        return CONFIG.conchShellMessageDisplay.get();
+    }
+
     public static boolean immersiveFish() {
         return CONFIG.immersiveFish.getAsBoolean();
     }
@@ -54,5 +65,30 @@ public class AlternaClientConfig {
 
     public static boolean redesignSalmon() {
         return CONFIG.redesignSalmon.getAsBoolean();
+    }
+
+    public enum ConchShellMessageDisplay implements TranslatableEnum {
+        CHAT("alterna.config.chat"),
+        HOTBAR("alterna.config.hotbar"),
+        OFF("options.off");
+
+        private final String name;
+
+        ConchShellMessageDisplay(String name) {
+            this.name = name;
+        }
+
+        public boolean actionBar() {
+            return this == HOTBAR;
+        }
+
+        public boolean disabled() {
+            return this == OFF;
+        }
+
+        @Override
+        public Component getTranslatedName() {
+            return Component.translatable(name);
+        }
     }
 }
