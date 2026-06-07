@@ -4,12 +4,14 @@ import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.client.AlternaBuiltinPacks;
 import io.github.lycanlucy.alterna.client.AlternaClientColors;
 import io.github.lycanlucy.alterna.client.AlternaClientConfig;
+import io.github.lycanlucy.alterna.common.data.AlternaAdvancementProvider;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import io.github.lycanlucy.alterna.common.tag.AlternaMobVariantTags;
 import io.github.lycanlucy.alterna.registry.AlternaAttachments;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -69,6 +71,9 @@ public class AlternaEvents {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         event.createDatapackRegistryObjects(new RegistrySetBuilder().add(MobVariant.REGISTRY, MobVariant::bootstrap));
+
+        DataGenerator generator = event.getGenerator();
+        generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
     }
 
     @SubscribeEvent
