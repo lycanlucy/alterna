@@ -19,5 +19,7 @@
   "subtitles.alterna.item.glider.boost": "Glider rises",
   "subtitles.alterna.item.glider.close": "Glider closes",
   "subtitles.alterna.item.glider.open": "Glider opens",
-  "death.attack.alterna.ink_sac": "%1$s was splatted by %2$s"
+  "death.attack.alterna.ink_sac": "%1$s was splatted by %2$s",
+  "subtitles.alterna.item.glow_ink_sac.spray": "Glow Ink Sac sprays",
+  "subtitles.alterna.item.ink_sac.spray": "Ink Sac sprays"
 }
