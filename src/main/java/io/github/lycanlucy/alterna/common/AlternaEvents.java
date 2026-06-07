@@ -9,6 +9,7 @@ import io.github.lycanlucy.alterna.client.data.AlternaItemModelProvider;
 import io.github.lycanlucy.alterna.common.data.*;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
 import io.github.lycanlucy.alterna.common.item.GliderItem;
+import io.github.lycanlucy.alterna.common.tag.AlternaMobEffectTags;
 import io.github.lycanlucy.alterna.common.tag.AlternaMobVariantTags;
 import io.github.lycanlucy.alterna.registry.AlternaAttachments;
 import net.minecraft.client.Minecraft;
@@ -18,6 +19,7 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
@@ -29,9 +31,11 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.EffectCures;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
@@ -40,12 +44,15 @@ import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = Alterna.MOD_ID)
@@ -100,9 +107,19 @@ public class AlternaEvents {
         generator.addProvider(event.includeServer(), new AlternaItemTagsProvider(packOutput, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaDamageTypeTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaInstrumentTagsProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new AlternaMobEffectTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
+        generator.addProvider(event.includeServer(), new AlternaGLMProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeClient(), new AlternaItemModelProvider(packOutput, existingFileHelper));
+    }
+
+    @SubscribeEvent
+    public static void onMobEffectAdded(MobEffectEvent.Added event) {
+        if (event.getEffectInstance().getEffect().is(AlternaMobEffectTags.UNCLEARABLE)) {
+            event.getEffectInstance().getCures().removeIf(EffectCures.DEFAULT_CURES::contains);
+        }
     }
 
     @SubscribeEvent

@@ -26,6 +26,7 @@ public class Alterna {
         AlternaAttachments.register(modEventBus);
         AlternaParticles.register(modEventBus);
         AlternaSounds.register(modEventBus);
+        AlternaLootModifiers.register(modEventBus);
         container.registerConfig(ModConfig.Type.CLIENT, AlternaClientConfig.SPEC);
         container.registerConfig(ModConfig.Type.SERVER, AlternaServerConfig.SPEC);
     }
