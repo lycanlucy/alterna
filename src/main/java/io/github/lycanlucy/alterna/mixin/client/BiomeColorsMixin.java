@@ -1,4 +1,4 @@
-package io.github.lycanlucy.alterna.mixin;
+package io.github.lycanlucy.alterna.mixin.client;
 
 import io.github.lycanlucy.alterna.client.AlternaClientColors;
 import io.github.lycanlucy.alterna.client.AlternaClientConfig;

@@ -1,4 +1,4 @@
-package io.github.lycanlucy.alterna.mixin;
+package io.github.lycanlucy.alterna.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.util.Pair;
@@ -8,7 +8,6 @@ import io.github.lycanlucy.alterna.client.model.OceanSalmonModel;
 import io.github.lycanlucy.alterna.client.model.RiverSalmonModel;
 import io.github.lycanlucy.alterna.client.renderer.ReplacedModelRenderer;
 import io.github.lycanlucy.alterna.common.entity.MobVariant;
-import io.github.lycanlucy.alterna.registry.AlternaAttachments;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.SalmonModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -40,27 +39,24 @@ public abstract class SalmonRendererMixin extends MobRenderer<Salmon, SalmonMode
         alterna$REPLACEMENTS.add(new Pair<>(new RiverSalmonModel(context.bakeLayer(RiverSalmonModel.LAYER_LOCATION)), MobVariant.RIVER_SALMON_MODEL));
     }
 
-    @Inject(method = "setupRotations(Lnet/minecraft/world/entity/animal/Salmon;Lcom/mojang/blaze3d/vertex/PoseStack;FFFF)V", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "setupRotations(Lnet/minecraft/world/entity/animal/Salmon;Lcom/mojang/blaze3d/vertex/PoseStack;FFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/MobRenderer;setupRotations(Lnet/minecraft/world/entity/LivingEntity;Lcom/mojang/blaze3d/vertex/PoseStack;FFFF)V", shift = At.Shift.AFTER), cancellable = true)
     private void changeRotations(Salmon entity, PoseStack poseStack, float bob, float yBodyRot, float partialTick, float scale, CallbackInfo ci) {
-        if (!alterna$enabled())
-            return;
-        super.setupRotations(entity, poseStack, bob, yBodyRot, partialTick, scale);
-        float rotationMultiplier = 1.0F;
-        float sineMultiplier = 1.0F;
-        if (!entity.isInWater()) {
-            rotationMultiplier = 1.3F;
-            sineMultiplier = 1.7F;
-        }
+        if (alterna$enabled()) {
+            float rotationMultiplier = 1.0F;
+            float sineMultiplier = 1.0F;
+            if (!entity.isInWater()) {
+                rotationMultiplier = 1.3F;
+                sineMultiplier = 1.7F;
+            }
 
-        float rotation = rotationMultiplier * 4.3F * Mth.sin(sineMultiplier * 0.6F * bob);
-        poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
-        if (entity.isInWater()) {
-            poseStack.mulPose(Axis.XP.rotationDegrees(entity.getData(AlternaAttachments.SWIM_ROT)));
-        } else {
-            poseStack.translate(0.2F, 0.1F, 0.0F);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+            float rotation = rotationMultiplier * 4.3F * Mth.sin(sineMultiplier * 0.6F * bob);
+            poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
+            if (!entity.isInWater()) {
+                poseStack.translate(0.2F, 0.1F, 0.0F);
+                poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+            }
+            ci.cancel();
         }
-        ci.cancel();
     }
 
     @Override

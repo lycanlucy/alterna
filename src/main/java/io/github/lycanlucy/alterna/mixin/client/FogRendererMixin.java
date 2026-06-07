@@ -1,4 +1,4 @@
-package io.github.lycanlucy.alterna.mixin;
+package io.github.lycanlucy.alterna.mixin.client;
 
 
 import com.llamalad7.mixinextras.sugar.Local;

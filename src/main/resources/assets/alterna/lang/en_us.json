@@ -1,6 +1,7 @@
 {
-  "alterna.pack.salmon.description": "Retextures for salmon-related items",
-  "alterna.pack.salmon": "Alterna Salmon",
+  "alterna.config.immersive_fish": "Immersive Fish",
+  "alterna.config.modify_biome_colors": "Modify Biome Colors",
   "alterna.config.redesign_salmon": "Redesign Salmon",
-  "alterna.config.modify_biome_colors": "Modify Biome Colors"
+  "alterna.pack.salmon": "Alterna Salmon",
+  "alterna.pack.salmon.description": "Retextures for salmon-related items"
 }

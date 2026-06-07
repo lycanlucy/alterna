@@ -10,9 +10,9 @@
     "requireAnnotations": true
   },
   "client": [
-    "BiomeColorsMixin",
-    "FogRendererMixin",
-    "LivingEntityRendererMixin",
-    "SalmonRendererMixin"
+    "client.BiomeColorsMixin",
+    "client.FogRendererMixin",
+    "client.LivingEntityRendererMixin",
+    "client.SalmonRendererMixin"
   ]
 }

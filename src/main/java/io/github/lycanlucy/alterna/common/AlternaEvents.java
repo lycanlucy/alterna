@@ -15,6 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.animal.AbstractFish;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
@@ -76,7 +77,7 @@ public class AlternaEvents {
     @SubscribeEvent
     public static void postEntityTick(EntityTickEvent.Post event) {
         Entity entity = event.getEntity();
-        if (entity.level().isClientSide() && entity.getType() == EntityType.SALMON) {
+        if (entity.level().isClientSide() && entity instanceof AbstractFish) {
             float rotation = Mth.lerp(0.05F, entity.getData(AlternaAttachments.SWIM_ROT), (float) entity.getDeltaMovement().y() * 400.0F);
             entity.setData(AlternaAttachments.SWIM_ROT, Mth.clamp(rotation, -70.0F, 70.0F));
         }
