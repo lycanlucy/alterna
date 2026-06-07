@@ -121,7 +121,7 @@ public class AlternaEvents {
         generator.addProvider(event.includeServer(), new AlternaMobEffectTagsProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new AlternaRecipeProvider(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
+        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Set.of(), List.of(new LootTableProvider.SubProviderEntry(AlternaBlockLoot::new, LootContextParamSets.BLOCK), new LootTableProvider.SubProviderEntry(AlternaChestLoot::new, LootContextParamSets.CHEST)), lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaGLMProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AlternaDataMapProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeClient(), new AlternaItemModelProvider(packOutput, existingFileHelper));
