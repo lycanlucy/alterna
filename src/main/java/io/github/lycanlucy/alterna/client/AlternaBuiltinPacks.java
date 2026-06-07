@@ -31,7 +31,7 @@ public class AlternaBuiltinPacks {
 
     public static boolean checkAddAndReload(String pack, boolean selected) {
         if (pack.equals(SALMON.toString())) {
-            if (AlternaClientConfig.CONFIG.wasRedesignSalmonEnabled == selected) return selected;
+            if (AlternaClientConfig.CONFIG.previousRedesignSalmon == selected) return selected;
         }
         if (selected) {
             Minecraft.getInstance().getResourcePackRepository().addPack(pack);

@@ -46,19 +46,23 @@ public class AlternaEvents {
     @SubscribeEvent
     public static void onConfigLoad(ModConfigEvent.Loading event) {
         if (event.getConfig().getSpec() == AlternaClientConfig.SPEC) {
-            AlternaClientConfig.CONFIG.wasModifyBiomeColorsEnabled = AlternaClientConfig.modifyBiomeColors();
-            AlternaClientConfig.CONFIG.wasRedesignSalmonEnabled = AlternaClientConfig.redesignSalmon();
+            AlternaClientConfig.CONFIG.previousModifyBiomeColors = AlternaClientConfig.modifyBiomeColors();
+            AlternaClientConfig.CONFIG.previousRedesignSalmon = AlternaClientConfig.redesignSalmon();
         }
     }
 
     @SubscribeEvent
     public static void onConfigReload(ModConfigEvent.Reloading event) {
         if (event.getConfig().getSpec() == AlternaClientConfig.SPEC) {
-            if (AlternaClientConfig.CONFIG.wasModifyBiomeColorsEnabled != AlternaClientConfig.modifyBiomeColors()) {
-                AlternaClientConfig.CONFIG.wasModifyBiomeColorsEnabled = AlternaClientConfig.modifyBiomeColors();
+            if (AlternaClientConfig.CONFIG.previousModifyBiomeColors != AlternaClientConfig.modifyBiomeColors()) {
+                AlternaClientConfig.CONFIG.previousModifyBiomeColors = AlternaClientConfig.modifyBiomeColors();
                 Minecraft.getInstance().delayTextureReload();
             }
-            AlternaClientConfig.CONFIG.wasRedesignSalmonEnabled = AlternaBuiltinPacks.checkAddAndReload(AlternaBuiltinPacks.SALMON.toString(), AlternaClientConfig.redesignSalmon());
+            if (AlternaClientConfig.CONFIG.previousAquariumOpacity != AlternaClientConfig.aquariumOpacity()) {
+                AlternaClientConfig.CONFIG.previousAquariumOpacity = AlternaClientConfig.aquariumOpacity();
+                Minecraft.getInstance().delayTextureReload();
+            }
+            AlternaClientConfig.CONFIG.previousRedesignSalmon = AlternaBuiltinPacks.checkAddAndReload(AlternaBuiltinPacks.SALMON.toString(), AlternaClientConfig.redesignSalmon());
         }
     }
 

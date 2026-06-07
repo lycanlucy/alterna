@@ -12,6 +12,7 @@
   "client": [
     "client.BiomeColorsMixin",
     "client.FogRendererMixin",
+    "client.LiquidBlockRendererMixin",
     "client.LivingEntityRendererMixin",
     "client.SalmonRendererMixin"
   ]
