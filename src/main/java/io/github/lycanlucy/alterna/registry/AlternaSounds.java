@@ -10,6 +10,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class AlternaSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, Alterna.MOD_ID);
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> BUCKET_EMPTY_BABY_TURTLE = sound("item.bucket.empty_baby_turtle");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BUCKET_FILL_BABY_TURTLE = sound("item.bucket.fill_baby_turtle");
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_BOOST = sound("item.glider.boost");
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_CLOSE = sound("item.glider.close");
     public static final DeferredHolder<SoundEvent, SoundEvent> GLIDER_GLIDE = sound("item.glider.glide");

@@ -15,11 +15,13 @@
   "alterna.config.schooling_fix": "Schooling Fix",
   "alterna.pack.salmon": "Alterna Salmon",
   "alterna.pack.salmon.description": "Retextures for salmon-related items",
+  "death.attack.alterna.ink_sac": "%1$s was splatted by %2$s",
+  "item.alterna.baby_turtle_bucket": "Bucket of Baby Turtle",
   "item.alterna.glider": "Glider",
+  "subtitles.alterna.item.bucket.fill_baby_turtle": "Baby Turtle scooped",
   "subtitles.alterna.item.glider.boost": "Glider rises",
   "subtitles.alterna.item.glider.close": "Glider closes",
   "subtitles.alterna.item.glider.open": "Glider opens",
-  "death.attack.alterna.ink_sac": "%1$s was splatted by %2$s",
   "subtitles.alterna.item.glow_ink_sac.spray": "Glow Ink Sac sprays",
   "subtitles.alterna.item.ink_sac.spray": "Ink Sac sprays"
 }

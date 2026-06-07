@@ -11,6 +11,7 @@ public class AlternaCreativeContents {
     static void populateToolsAndUtilities(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() != CreativeModeTabs.TOOLS_AND_UTILITIES) return;
         before(event, Items.ELYTRA, AlternaItems.GLIDER);
+        before(event, Items.TADPOLE_BUCKET, AlternaItems.BABY_TURTLE_BUCKET);
     }
 
     // Insert a new stack after the referenced item

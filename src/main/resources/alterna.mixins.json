@@ -11,7 +11,8 @@
     "common.PhantomSpawnerMixin",
     "common.PhantomSweepAttackGoalMixin",
     "common.ServerLevelMixin",
-    "common.ServerPlayerMixin"
+    "common.ServerPlayerMixin",
+    "common.TurtleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
