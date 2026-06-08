@@ -5,6 +5,7 @@ import io.github.lycanlucy.alterna.client.layer.GliderLayer;
 import io.github.lycanlucy.alterna.client.model.GliderModel;
 import io.github.lycanlucy.alterna.client.model.OceanSalmonModel;
 import io.github.lycanlucy.alterna.client.model.RiverSalmonModel;
+import io.github.lycanlucy.alterna.client.particle.AuraParticle;
 import io.github.lycanlucy.alterna.client.renderer.ItemRackRenderer;
 import io.github.lycanlucy.alterna.common.EnumParams;
 import io.github.lycanlucy.alterna.common.item.GliderItem;
@@ -12,7 +13,6 @@ import io.github.lycanlucy.alterna.registry.AlternaBlockEntities;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import io.github.lycanlucy.alterna.registry.AlternaParticles;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.particle.SpellParticle;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.FastColor;
@@ -62,7 +62,7 @@ public class AlternaClientEvents {
 
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(AlternaParticles.LORD_OF_THE_SKIES.get(), SpellParticle.Provider::new);
+        event.registerSpriteSet(AlternaParticles.LORD_OF_THE_SKIES.get(), AuraParticle.Provider::new);
     }
 
     @SubscribeEvent
