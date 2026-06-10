@@ -32,6 +32,50 @@
     ],
     "subtitle": "subtitles.alterna.block.item_rack.rotate_item"
   },
+  "entity.vanish_item_frame.add_item": {
+    "sounds": [
+      "entity/itemframe/add_item1",
+      "entity/itemframe/add_item2",
+      "entity/itemframe/add_item3",
+      "entity/itemframe/add_item4"
+    ],
+    "subtitle": "subtitles.entity.vanish_item_frame.add_item"
+  },
+  "entity.vanish_item_frame.break": {
+    "sounds": [
+      "entity/itemframe/break1",
+      "entity/itemframe/break2",
+      "entity/itemframe/break3"
+    ],
+    "subtitle": "subtitles.entity.vanish_item_frame.break"
+  },
+  "entity.vanish_item_frame.place": {
+    "sounds": [
+      "entity/itemframe/place1",
+      "entity/itemframe/place2",
+      "entity/itemframe/place3",
+      "entity/itemframe/place4"
+    ],
+    "subtitle": "subtitles.entity.vanish_item_frame.place"
+  },
+  "entity.vanish_item_frame.remove_item": {
+    "sounds": [
+      "entity/itemframe/remove_item1",
+      "entity/itemframe/remove_item2",
+      "entity/itemframe/remove_item3",
+      "entity/itemframe/remove_item4"
+    ],
+    "subtitle": "subtitles.entity.vanish_item_frame.remove_item"
+  },
+  "entity.vanish_item_frame.rotate_item": {
+    "sounds": [
+      "entity/itemframe/rotate_item1",
+      "entity/itemframe/rotate_item2",
+      "entity/itemframe/rotate_item3",
+      "entity/itemframe/rotate_item4"
+    ],
+    "subtitle": "subtitles.entity.vanish_item_frame.rotate_item"
+  },
   "event.mob_effect.lord_of_the_skies": {
     "sounds": [
       {
@@ -150,5 +194,85 @@
       "entity/squid/squirt3"
     ],
     "subtitle": "subtitles.alterna.item.ink_sac.spray"
+  },
+  "entity.octopus.squirt": {
+    "sounds": [
+      "entity/squid/squirt1",
+      "entity/squid/squirt2",
+      "entity/squid/squirt3"
+    ],
+    "subtitle": "subtitles.alterna.entity.octopus.squirt"
+  },
+  "entity.octopus.swim": {
+    "sounds": [
+      {
+        "name": "entity/squid/ambient1",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/ambient2",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/ambient3",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/ambient4",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/ambient5",
+        "pitch": 0.8
+      }
+    ],
+    "subtitle": "subtitles.alterna.entity.octopus.swim"
+  },
+  "entity.octopus.death": {
+    "sounds": [
+      {
+        "name": "entity/squid/death1",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/death2",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/death3",
+        "pitch": 0.8
+      }
+    ],
+    "subtitle": "subtitles.alterna.entity.octopus.death"
+  },
+  "entity.octopus.hurt": {
+    "sounds": [
+      {
+        "name": "entity/squid/hurt1",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/hurt2",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/hurt3",
+        "pitch": 0.8
+      },
+      {
+        "name": "entity/squid/hurt4",
+        "pitch": 0.8
+      }
+    ],
+    "subtitle": "subtitles.alterna.entity.octopus.hurt"
+  },
+  "entity.octopus.step": {
+    "sounds": [
+      "alterna:entity/octopus/step1",
+      "alterna:entity/octopus/step2",
+      "alterna:entity/octopus/step3",
+      "alterna:entity/octopus/step4"
+    ],
+    "subtitle": "subtitles.alterna.entity.octopus.step"
   }
 }

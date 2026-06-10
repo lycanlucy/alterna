@@ -40,6 +40,8 @@
   "block.alterna.warped_item_rack": "Warped Item Rack",
   "death.attack.alterna.ink_sac": "%1$s was splatted by %2$s",
   "effect.alterna.lord_of_the_skies": "Lord of the Skies",
+  "entity.alterna.octopus": "Octopus",
+  "entity.alterna.vanish_item_frame": "Vanish Item Frame",
   "instrument.alterna.pour_conch_shell": "Pour",
   "instrument.alterna.roar_conch_shell": "Roar",
   "instrument.alterna.shine_conch_shell": "Shine",
@@ -52,7 +54,10 @@
   "item.alterna.conch_shell.weather_change.rain": "A deluge has been brought forth",
   "item.alterna.conch_shell.weather_change.thunder": "A tempest has been brought forth",
   "item.alterna.glider": "Glider",
+  "item.alterna.ink_bottle": "Ink Bottle",
+  "item.alterna.octopus_spawn_egg": "Octopus Spawn Egg",
   "item.alterna.sunken_trident": "Sunken Trident",
+  "item.alterna.vanish_item_frame": "Vanish Item Frame",
   "subtitles.alterna.block.item_rack.add_item": "Item Rack fills",
   "subtitles.alterna.block.item_rack.remove_item": "Item Rack empties",
   "subtitles.alterna.block.item_rack.rotate_item": "Item Rack clicks",
@@ -63,5 +68,11 @@
   "subtitles.alterna.item.glider.close": "Glider closes",
   "subtitles.alterna.item.glider.open": "Glider opens",
   "subtitles.alterna.item.glow_ink_sac.spray": "Glow Ink Sac sprays",
-  "subtitles.alterna.item.ink_sac.spray": "Ink Sac sprays"
+  "subtitles.alterna.item.ink_sac.spray": "Ink Sac sprays",
+  "subtitles.entity.vanish_item_frame.add_item": "Vanish Item Frame fills",
+  "subtitles.entity.vanish_item_frame.break": "Vanish Item Frame broken",
+  "subtitles.entity.vanish_item_frame.place": "Vanish Item Frame placed",
+  "subtitles.entity.vanish_item_frame.remove_item": "Vanish Item Frame empties",
+  "subtitles.entity.vanish_item_frame.rotate_item": "Vanish Item Frame clicks",
+  "subtitles.entity.octopus.swim": "Octopus swims"
 }

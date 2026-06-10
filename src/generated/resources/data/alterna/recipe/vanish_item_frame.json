@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:item_frame"
+    },
+    {
+      "item": "alterna:ink_bottle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "alterna:vanish_item_frame"
+  }
+}

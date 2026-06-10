@@ -25,5 +25,8 @@ public class AlternaItemModelProvider extends ItemModelProvider {
         basicItem(AlternaItems.CRIMSON_ITEM_RACK.get());
         basicItem(AlternaItems.WARPED_ITEM_RACK.get());
         basicItem(AlternaItems.BABY_TURTLE_BUCKET.get());
+        basicItem(AlternaItems.VANISH_ITEM_FRAME.get());
+        basicItem(AlternaItems.INK_BOTTLE.get());
+        spawnEggItem(AlternaItems.OCTOPUS_SPAWN_EGG.get());
     }
 }

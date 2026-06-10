@@ -1,10 +1,7 @@
 package io.github.lycanlucy.alterna.registry;
 
 import io.github.lycanlucy.alterna.Alterna;
-import io.github.lycanlucy.alterna.common.item.ConchShellItem;
-import io.github.lycanlucy.alterna.common.item.GliderItem;
-import io.github.lycanlucy.alterna.common.item.SunkenTridentItem;
-import io.github.lycanlucy.alterna.common.item.TridentProperties;
+import io.github.lycanlucy.alterna.common.item.*;
 import io.github.lycanlucy.alterna.common.tag.AlternaInstrumentTags;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +10,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -34,6 +32,9 @@ public class AlternaItems {
     public static final DeferredItem<Item> CONCH_SHELL = ITEMS.register("conch_shell", () -> new ConchShellItem(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1), AlternaInstrumentTags.CONCH_SHELLS));
     public static final DeferredItem<Item> GLIDER = ITEMS.registerItem("glider", GliderItem::new, new Item.Properties().durability(60));
     public static final DeferredItem<Item> BABY_TURTLE_BUCKET = ITEMS.register("baby_turtle_bucket", () -> new MobBucketItem(EntityType.TURTLE, Fluids.WATER, AlternaSounds.BUCKET_EMPTY_BABY_TURTLE.get(), new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY.update(compoundTag -> compoundTag.putInt("Age", -24000)))));
+    public static final DeferredItem<Item> VANISH_ITEM_FRAME = ITEMS.registerItem("vanish_item_frame", VanishItemFrameItem::new);
+    public static final DeferredItem<Item> INK_BOTTLE = ITEMS.registerItem("ink_bottle", Item::new, new Item.Properties().stacksTo(16).craftRemainder(Items.GLASS_BOTTLE));
+    public static final DeferredItem<Item> OCTOPUS_SPAWN_EGG = ITEMS.registerItem("octopus_spawn_egg", properties -> new DeferredSpawnEggItem(AlternaEntities.OCTOPUS, 0xf26013, 0xfe9f2a, properties));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

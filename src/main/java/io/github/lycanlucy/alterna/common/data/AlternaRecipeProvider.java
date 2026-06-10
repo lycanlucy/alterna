@@ -4,10 +4,7 @@ import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.registry.AlternaItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
@@ -42,5 +39,6 @@ public class AlternaRecipeProvider extends RecipeProvider {
         itemRack(recipeOutput, AlternaItems.WARPED_ITEM_RACK, Items.STRIPPED_WARPED_STEM);
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, AlternaItems.GLIDER.get()).define('#', Items.PHANTOM_MEMBRANE).define('/', Items.STICK).define('S', Items.STRING).pattern("###").pattern("///").pattern("S S").unlockedBy("has_membrane", has(Items.PHANTOM_MEMBRANE)).save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.TRIDENT).define('#', Items.PRISMARINE_SHARD).define('X', AlternaItems.SUNKEN_TRIDENT).pattern("###").pattern("#X#").pattern("###").unlockedBy("has_sunken_tridnet", has(AlternaItems.SUNKEN_TRIDENT)).save(recipeOutput, Alterna.id("trident"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, AlternaItems.VANISH_ITEM_FRAME).requires(Items.ITEM_FRAME).requires(AlternaItems.INK_BOTTLE).unlockedBy("has_item_frame", has(Items.ITEM_FRAME)).unlockedBy("has_ink_bottle", has(AlternaItems.INK_BOTTLE)).save(recipeOutput);
     }
 }

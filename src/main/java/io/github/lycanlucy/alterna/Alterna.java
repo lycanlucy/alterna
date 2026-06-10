@@ -23,6 +23,7 @@ public class Alterna {
         AlternaBlockEntities.register(modEventBus);
         AlternaItems.register(modEventBus);
         AlternaDataComponents.register(modEventBus);
+        AlternaEntities.register(modEventBus);
         AlternaMobEffects.register(modEventBus);
         AlternaInstruments.register(modEventBus);
         AlternaTriggers.register(modEventBus);

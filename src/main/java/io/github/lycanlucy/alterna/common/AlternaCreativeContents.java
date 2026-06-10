@@ -23,6 +23,7 @@ public class AlternaCreativeContents {
         before(event, Items.ITEM_FRAME, AlternaItems.BAMBOO_ITEM_RACK);
         before(event, Items.ITEM_FRAME, AlternaItems.CRIMSON_ITEM_RACK);
         before(event, Items.ITEM_FRAME, AlternaItems.WARPED_ITEM_RACK);
+        after(event, Items.GLOW_ITEM_FRAME, AlternaItems.VANISH_ITEM_FRAME);
     }
 
     static void populateToolsAndUtilities(BuildCreativeModeTabContentsEvent event) {
@@ -35,6 +36,16 @@ public class AlternaCreativeContents {
     static void populateCombat(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() != CreativeModeTabs.COMBAT) return;
         before(event, Items.TRIDENT, AlternaItems.SUNKEN_TRIDENT);
+    }
+
+    static void populateIngredients(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() != CreativeModeTabs.INGREDIENTS) return;
+        after(event, Items.GLOW_INK_SAC, AlternaItems.INK_BOTTLE);
+    }
+
+    static void populateSpawnEggs(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() != CreativeModeTabs.SPAWN_EGGS) return;
+        after(event, Items.OCELOT_SPAWN_EGG, AlternaItems.OCTOPUS_SPAWN_EGG);
     }
 
     // Insert a new stack after the referenced item
