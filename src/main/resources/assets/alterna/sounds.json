@@ -150,5 +150,13 @@
       "entity/squid/squirt3"
     ],
     "subtitle": "subtitles.alterna.item.ink_sac.spray"
+  },
+  "music_disc.creep": {
+    "sounds": [
+      {
+        "name": "alterna:records/creep",
+        "stream": true
+      }
+    ]
   }
 }

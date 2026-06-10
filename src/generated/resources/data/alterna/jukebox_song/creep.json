@@ -1,0 +1,8 @@
+{
+  "comparator_output": 1,
+  "description": {
+    "translate": "jukebox_song.alterna.creep"
+  },
+  "length_in_seconds": 172.0,
+  "sound_event": "alterna:music_disc.creep"
+}

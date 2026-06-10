@@ -39,7 +39,7 @@ displayName="${mod_name}" #mandatory
 logoFile="logo.png" #optional
 
 # A text field displayed in the mod UI
-credits="VitreousGlassy | ianaduarte | cw.png | OyamaCallista" #optional
+credits="VitreousGlassy | ianaduarte | cw.png | OyamaCallista | Decadenza" #optional
 
 # The authors of the mod, displayed in the mod UI (optional)
 authors="lycanlucy"

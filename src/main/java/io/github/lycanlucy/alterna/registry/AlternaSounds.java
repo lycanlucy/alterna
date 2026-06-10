@@ -25,6 +25,7 @@ public class AlternaSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_RACK_ADD_ITEM = sound("block.item_rack.add_item");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_RACK_REMOVE_ITEM = sound("block.item_rack.remove_item");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_RACK_ROTATE_ITEM = sound("block.item_rack.rotate_item");
+    public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_DISC_CREEP = sound("music_disc.creep");
 
     public static DeferredHolder<SoundEvent, SoundEvent> sound(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(Alterna.id(name)));

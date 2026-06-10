@@ -2,6 +2,7 @@ package io.github.lycanlucy.alterna.common;
 
 import io.github.lycanlucy.alterna.Alterna;
 import io.github.lycanlucy.alterna.bootstrap.AlternaDamageTypes;
+import io.github.lycanlucy.alterna.bootstrap.AlternaJukeboxSongs;
 import io.github.lycanlucy.alterna.client.AlternaBuiltinPacks;
 import io.github.lycanlucy.alterna.client.AlternaClientColors;
 import io.github.lycanlucy.alterna.client.AlternaClientConfig;
@@ -105,7 +106,7 @@ public class AlternaEvents {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
-        event.createDatapackRegistryObjects(new RegistrySetBuilder().add(Registries.DAMAGE_TYPE, AlternaDamageTypes::bootstrap).add(MobVariant.REGISTRY, MobVariant::bootstrap));
+        event.createDatapackRegistryObjects(new RegistrySetBuilder().add(Registries.JUKEBOX_SONG, AlternaJukeboxSongs::bootstrap).add(Registries.DAMAGE_TYPE, AlternaDamageTypes::bootstrap).add(MobVariant.REGISTRY, MobVariant::bootstrap));
 
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();

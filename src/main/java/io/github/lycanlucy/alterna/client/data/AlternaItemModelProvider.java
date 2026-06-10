@@ -25,5 +25,6 @@ public class AlternaItemModelProvider extends ItemModelProvider {
         basicItem(AlternaItems.CRIMSON_ITEM_RACK.get());
         basicItem(AlternaItems.WARPED_ITEM_RACK.get());
         basicItem(AlternaItems.BABY_TURTLE_BUCKET.get());
+        basicItem(AlternaItems.MUSIC_DISC_CREEP.get());
     }
 }

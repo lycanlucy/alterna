@@ -1,6 +1,7 @@
 package io.github.lycanlucy.alterna.registry;
 
 import io.github.lycanlucy.alterna.Alterna;
+import io.github.lycanlucy.alterna.bootstrap.AlternaJukeboxSongs;
 import io.github.lycanlucy.alterna.common.item.ConchShellItem;
 import io.github.lycanlucy.alterna.common.item.GliderItem;
 import io.github.lycanlucy.alterna.common.item.SunkenTridentItem;
@@ -34,6 +35,7 @@ public class AlternaItems {
     public static final DeferredItem<Item> CONCH_SHELL = ITEMS.register("conch_shell", () -> new ConchShellItem(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1), AlternaInstrumentTags.CONCH_SHELLS));
     public static final DeferredItem<Item> GLIDER = ITEMS.registerItem("glider", GliderItem::new, new Item.Properties().durability(60));
     public static final DeferredItem<Item> BABY_TURTLE_BUCKET = ITEMS.register("baby_turtle_bucket", () -> new MobBucketItem(EntityType.TURTLE, Fluids.WATER, AlternaSounds.BUCKET_EMPTY_BABY_TURTLE.get(), new Item.Properties().stacksTo(1).component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY.update(compoundTag -> compoundTag.putInt("Age", -24000)))));
+    public static final DeferredItem<Item> MUSIC_DISC_CREEP = ITEMS.registerSimpleItem("music_disc_creep", new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(AlternaJukeboxSongs.CREEP));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

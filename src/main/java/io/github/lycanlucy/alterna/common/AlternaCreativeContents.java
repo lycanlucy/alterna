@@ -29,6 +29,7 @@ public class AlternaCreativeContents {
         if (event.getTabKey() != CreativeModeTabs.TOOLS_AND_UTILITIES) return;
         before(event, Items.ELYTRA, AlternaItems.GLIDER);
         before(event, Items.TADPOLE_BUCKET, AlternaItems.BABY_TURTLE_BUCKET);
+        after(event, Items.MUSIC_DISC_OTHERSIDE, AlternaItems.MUSIC_DISC_CREEP);
         event.getParameters().holders().lookup(Registries.INSTRUMENT).ifPresent(instrumentLookup -> instruments(event, instrumentLookup, AlternaItems.CONCH_SHELL.get(), AlternaInstrumentTags.CONCH_SHELLS));
     }
 
